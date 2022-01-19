@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+
+        <%- include('../partials/login-nav.ejs'); %>
+            <div class="admin-log" id="guest-reg">
+                <h1>Donor Information</h1>
+                <% if (stsMsg) { %>
+                    <p class="success">
+                        <%= stsMsg %>
+                    </p>
+                    <% } %>
+                        <form class="admin-login" action="/guest-reg" method="post" autocomplete="off">
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="donorName" class="guest-name" type="text">
+                                <label>Name</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="donorNumber" class="guest-pass" type="number">
+                                <label>Number</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="donorAddress" class="guest-addr" type="text">
+                                <label>Address</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="donorPin" maxlength="6" class="guest-quan"
+                                    type="number">
+                                <label>Area Pincode</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="foodQuantity" class="guest-quan" type="number">
+                                <label>Quantity Of Food</label>
+                            </div>
+                            <div class="material-textfield">
+                                <textarea placeholder=" " name="discription" class="guest-desc" type="text"></textarea>
+                                <label>Discription</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " class="submit" type="submit" value="Send">
+                            </div>
+                        </form>
+                        <div>
+    </body>
+
+    </html>

@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <div id="rest-list" class="rest-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">NGO UID</th>
+                            <th scope="col">Ngo Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(length> 0) { %>
+                            <% rows.forEach((rows, index)=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= rows.ngo_unique_id%>
+                                    </th>
+                                    <td>
+                                        <%= rows.Name%>
+                                    </td>
+                                    <td>
+                                        <%= rows.ngo_address%>
+                                    </td>
+                                    <td>
+                                        <%= rows.ngo_pincode%>
+                                    </td>
+                                    <td>
+                                        <%= rows.ngo_email%>
+                                    </td>
+                                    <td>
+                                        <%= rows.ngo_phone%>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+    </body>
+
+    </html>

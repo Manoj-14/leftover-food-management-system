@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <div class="rest-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Restaurant name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(length> 0) { %>
+                            <% rows.forEach((rows, index)=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= rows.rest_name%>
+                                    </th>
+                                    <td>
+                                        <%= rows.rest_loc%>
+                                    </td>
+                                    <td>
+                                        <%= rows.rest_pin%>
+                                    </td>
+                                    <td>
+                                        <%= rows.rest_email%>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+    </body>
+
+    </html>

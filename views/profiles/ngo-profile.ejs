@@ -1,0 +1,100 @@
+<%- include('../partials/header.ejs'); %>
+
+    <head>
+        <link rel="stylesheet" href="css/restDash.css">
+    </head>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <section class="rest-dashboard">
+                <section class="prof-det">
+                    <div class="prof-attr">
+                        <spam>Name:</spam>
+                        <spam>
+                            <%= ngoUid%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Name:</spam>
+                        <spam>
+                            <%= ngoName%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Email:</spam>
+                        <spam>
+                            <%= ngoEmail%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Phone:</spam>
+                        <spam>
+                            <%= ngoPhone%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>location:</spam>
+                        <spam>
+                            <%= ngoLoc%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Pincode:</spam>
+                        <spam>
+                            <%= ngoPin%>
+                        </spam>
+                    </div>
+                </section>
+                <h3>Send Food</h3>
+                <div id="rest-list" class="rest-list">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order no</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Pincode</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%if(length> 0) { %>
+                                <% rows.forEach((rows, index)=> { %>
+                                    <form class="col-md-2" action="/accept" class="aprove-form" method="post">
+                                        <tr id="<%=index + 1 %>">
+                                            <th scope="row" class="row-data">
+                                                <input name="id" readonly value="<%= rows.Sl_no%>" />
+                                            </th>
+                                            <td class="row-data">
+                                                <%= rows.Name%>
+                                            </td>
+                                            <td class="row-data">
+                                                <%= rows.Phone%>
+                                            </td class="row-data">
+                                            <td class="row-data">
+                                                <%= rows.Quantity%>
+                                            </td>
+                                            <td class="row-data">
+                                                <%= rows.Pincode%>
+                                            </td>
+
+                                            <td class="action-btns" class="row-data">
+                                                <button type="submit" class="btn btn-sm btn-success">Accept</button>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                    <%})%>
+                                        <%} else {%>
+                                            <tr>No Orders</tr>
+                                            <% } %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <script src="js/index.js"></script>
+    </body>
+
+
+    </html>

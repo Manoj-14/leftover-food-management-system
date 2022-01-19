@@ -1,0 +1,51 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <div id="rest-list" class="rest-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order No</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Ngo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(length> 0) { %>
+                            <% rows.forEach((rows, index)=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= rows.order_no %>
+                                    </th>
+                                    <td>
+                                        <%= rows.date%>
+                                    </td>
+                                    <td>
+                                        <%= rows.name%>
+                                    </td>
+                                    <td>
+                                        <%= rows.pincode%>
+                                    </td>
+                                    <td>
+                                        <%= rows.quantity %>
+                                    </td>
+                                    <td>
+                                        <%= rows.action %>
+                                    </td>
+                                    <td>
+                                        <%= rows.Ngo %>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+    </body>
+
+    </html>

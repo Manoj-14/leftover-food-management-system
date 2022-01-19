@@ -1,0 +1,61 @@
+<%- include('../partials/header.ejs'); %>
+
+    <head>
+        <link rel="stylesheet" href="css/restDash.css">
+    </head>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <section class="rest-dashboard">
+                <section class="prof-det">
+                    <div class="prof-attr">
+                        <spam>Name:</spam>
+                        <spam>
+                            <%= restName%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Email:</spam>
+                        <spam>
+                            <%= restEmail%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Phone:</spam>
+                        <spam>
+                            <%= restPhone%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>location:</spam>
+                        <spam>
+                            <%= restLoc%>
+                        </spam>
+                    </div>
+                    <div class="prof-attr">
+                        <spam>Pincode:</spam>
+                        <spam>
+                            <%= restPin%>
+                        </spam>
+                    </div>
+                </section>
+                <div class="add-don">
+                    <h3>Send Food</h3>
+                    <form class="admin-login" action="/rest-orders" method="post" autocomplete="off">
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="foodQuantity" class="guest-quan" type="number">
+                            <label>Quantity Of Food</label>
+                        </div>
+                        <div class="material-textfield">
+                            <textarea placeholder=" " name="discription" class="guest-desc" type="text"></textarea>
+                            <label>Discription</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " class="submit" type="submit" value="Send">
+                        </div>
+                    </form>
+                </div>
+            </section>
+    </body>
+
+    </html>

@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+
+            <form class="prof-article" id="profile" autocomplete="off" action="/admin-update" method="post">
+
+                <div class="prof-detail">
+                    <% if (uptMsg) { %>
+                        <p style="text-align: center;" class="success">
+                            <%= uptMsg %>
+                        </p>
+                        <% } %>
+                            <!-- <h5 class="success" style="width: 100%; text-align:center">{{updated}}</h5> -->
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminUsername" class="admin-user" type="text"
+                                    readonly value="<%= adminUsername %>" />
+                                <label>Username</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminName" class="admin-user" type="text"
+                                    value="<%= adminName %>" />
+                                <label>Name</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminEmail" class="admin-user" type="email"
+                                    value="<%= adminEmail %>" />
+                                <label>Email</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminPhone" class="admin-user" type="number"
+                                    value="<%= adminPhone %>" />
+                                <label>Number</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminAddr" class="admin-user" type="text"
+                                    value="<%= adminAddr %>" />
+                                <label>Address</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminPass" class="admin-user" type="password"
+                                    value="<%= adminPassword %>" />
+                                <label>Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " class="submit" id="save-prof" type="submit" value="Save" />
+                            </div>
+                </div>
+            </form>
+    </body>

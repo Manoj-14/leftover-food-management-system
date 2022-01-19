@@ -1,0 +1,27 @@
+.rest-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prof-det {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.prof-det spam {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.prof-attr spam + spam {
+  border-bottom: 3px solid #ff9f1c;
+}
+.row-data input {
+  border: none;
+  width: min-content;
+  height: 1.3rem;
+}
+.row-data {
+  background-color: black;
+}

@@ -1,0 +1,76 @@
+<%- include('./partials/header.ejs'); %>
+
+    <body>
+        <div class="wrapper">
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about-us">About US</a></li>
+                    <li><a href="#support">Contact</a></li>
+                    <li class="drop-link">
+                        <a href="#">Sign In</a>
+                        <ul class="drop-nav">
+                            <li><a href="/admin-login">Admin</a></li>
+                            <li><a href="/restaurant-login">Restaurant</a></li>
+                            <li><a href="/ngo-login">NGO</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <header>
+                <section>
+                    <h1 id="title">Food Waste <br />Managemanet System</h1>
+                    <div class="donor">
+                        <a href="/guest-donate">Click Here to donote</a>
+                    </div>
+                </section>
+            </header>
+            <main id="about-us">
+                <h1 class="sub-title">About US</h1>
+                <section class="card-group">
+                    <div class="card">
+                        <img src="/admin.png" alt="Admin" />
+                        <div class="card-body">
+                            <h3 class="card-title">Manoj M</h3>
+                            <p class="card-text">ISE 5th A</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/admin.png" alt="Admin" />
+                        <div class="card-body">
+                            <h3 class="card-title">Jeevan</h3>
+                            <p class="card-text">ISE 5th A</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/admin.png" alt="Admin" />
+                        <div class="card-body">
+                            <h3 class="card-title">Manohar</h3>
+                            <p class="card-text">ISE 5th A</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/admin.png" alt="Admin" />
+                        <div class="card-body">
+                            <h3 class="card-title">Harshitha</h3>
+                            <p class="card-text">ISE 5th A</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer id="support">
+                <h1 class="sub-title">Contact US</h1>
+                <section class="card">
+                    <div class="card-body">
+                        <a href="mailto: manumadhu1425@gmail.com" class="card-link btn">Email Us</a>
+                        <a href="tel:+919741626527" class="card-link btn">Call</a>
+                        <a href="https://github.com/Manoj-14/waste-food-management-system" target="_blank"
+                            class="card-link btn">Github</a>
+                    </div>
+                </section>
+            </footer>
+        </div>
+        <script src="index.js"></script>
+    </body>
+
+    </html>

@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <div id="rest-list" class="rest-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Request No</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(length> 0) { %>
+                            <% rows.forEach((rows, index)=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= rows.Sl_no%>
+                                    </th>
+                                    <td>
+                                        <%= rows.date%>
+                                    </td>
+                                    <td>
+                                        <%= rows.Quantity%>
+                                    </td>
+                                    <td>
+                                        <%= rows.Status%>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%} else {%>
+                                        <p>Empty</p>
+                                        <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+    </body>
+
+    </html>

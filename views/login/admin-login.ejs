@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs'); %>
+
+    <body>
+        <%- include('../partials/login-nav.ejs'); %>
+            <div class="admin-log">
+
+                <h1>Admin Login</h1>
+                <form class="admin-login" action="AdminAuth" method="post" autocomplete="off">
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="adminusername" class="admin-user" type="text">
+                        <label>Username</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="adminpassword" class="admin-pass" type="password">
+                        <label>Password</label>
+                    </div>
+
+                    <div class="material-textfield">
+                        <input placeholder=" " class="submit" type="submit" value="Sign In">
+                    </div>
+                    <div class="sub-head">
+                        <spam>or</spam>
+                        <h3>Sign IN</h3>
+                        <spam>as</spam>
+                    </div>
+                    <div class="material-textfield" id="other-sign">
+                        <div class="sign-link">
+                            <a href="/ngo-login" id="ngo">NGO</a>
+                        </div>
+                        <div class="sign-link">
+                            <a href="/restaurant-login" id="restaurant">Restaurant</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </body>

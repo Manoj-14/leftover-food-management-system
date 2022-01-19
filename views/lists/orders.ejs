@@ -1,0 +1,63 @@
+<%- include('../partials/header.ejs'); %>
+
+    <head>
+        <link rel="stylesheet" href="css/restDash.css">
+    </head>
+
+    <body>
+        <%- include('../partials/dashboard-nav.ejs'); %>
+            <div id="rest-list" class="rest-list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order no</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="tect-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(length> 0) { %>
+                            <% rows.forEach((rows, index)=> { %>
+                                <form class="col-md-2" method="post">
+                                    <tr>
+                                        <th scope="row" class="row-data">
+                                            <input name="id" readonly value="<%= rows.Sl_no%>" />
+                                        </th>
+                                        <td class="row-data">
+                                            <%= rows.Name%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.Phone%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.Quantity%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.Pincode%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.Status%>
+                                        </td>
+
+                                        <td class="action-btns" class="row-data">
+                                            <button type="submit" formaction="/acceptOrd"
+                                                class="btn btn-sm btn-success">Accept</button>
+                                            <button type="submit" formaction="/rejectOrd"
+                                                class="btn btn-sm btn-danger">Reject</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                <%})%>
+                                    <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+
+    </body>
+
+    </html>

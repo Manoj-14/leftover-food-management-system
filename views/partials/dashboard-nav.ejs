@@ -1,0 +1,70 @@
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dash-nav.css">
+</head>
+<% if (admin_prof) { %>
+
+    <div class="dash-nav">
+        <nav>
+            <ul>
+                <li id="active">
+                    <form action="admin-profile" method="POST"><button type="submit">Profile</button></form>
+                </li>
+                <li>
+                    <form action="rest-list" method="POST"><button type="submit">Restaurant List</button></form>
+                </li>
+                <li>
+                    <form action="ngo-list" method="POST"><button type="submit">NGO List</button></form>
+                </li>
+                <li>
+                    <form action="orders" method="POST"><button type="submit">Orders</button></form>
+                </li>
+                <li>
+                    <form action="history" method="POST"><button type="submit">Logs</button></form>
+                </li>
+                <li>
+                    <form action="/" method="POST"><button type="submit">Logout</button></form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <% } %>
+        <% if (rest_prof) { %>
+
+            <div class="dash-nav">
+                <nav>
+                    <ul>
+                        <li id="active">
+                            <form action="rest-profile" method="POST"><button type="submit">Home</button></form>
+                        </li>
+                        <li>
+                            <form action="rest-log" method="POST"><button type="submit">Logs</button></form>
+                        </li>
+                        <li>
+                            <form action="/" method="POST"><button type="submit">Logout</button></form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <% } %>
+                <% if (ngo_prof) { %>
+
+                    <div class="dash-nav">
+                        <nav>
+                            <ul>
+                                <li id="active">
+                                    <form action="ngo-profile" method="POST"><button type="submit">Home</button></form>
+                                </li>
+                                <li>
+                                    <form action="ngo-log" method="POST"><button type="submit">Logs</button></form>
+                                </li>
+                                <li>
+                                    <form action="/" method="POST"><button type="submit">Logout</button></form>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <% } %>
+                        <h2 class="dash-nav-title">
+                            <%= nav_title %>
+                        </h2>
