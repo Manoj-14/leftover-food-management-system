@@ -12,7 +12,7 @@ module.exports = {
         var date = myDate.getDate();
         var month = myDate.getMonth() + 1;
         var year = myDate.getFullYear();
-        var presentDate = date + "-" + month + "-" + year;
+        var presentDate = year + "-" + month + "-" + date;
         console.log(presentDate);
         const name = rows[0].Name;
         const phone = rows[0].Phone;
@@ -22,8 +22,8 @@ module.exports = {
         const email = rows[0].email;
         const ngoName = req.cookies.ngoDet.ngo_name;
         db.query(
-          "update log set action = ? ,Ngo = ? where order_no = ? ",
-          ["Accepted by ngo", ngoName, Sl_no],
+          "update log set Ngo = ? where order_no = ? ",
+          [ngoName, Sl_no],
           (err, results) => {
             console.log(results);
             db.query(
@@ -49,7 +49,7 @@ module.exports = {
         var date = myDate.getDate();
         var month = myDate.getMonth() + 1;
         var year = myDate.getFullYear();
-        var presentDate = date + "-" + month + "-" + year;
+        var presentDate = year + "-" + month + "-" + date;
         db.query("select * from orders where Sl_no=?", [Sl_no], (err, rows) => {
           restName = rows[0].Name;
           phone = rows[0].Phone;
@@ -61,12 +61,8 @@ module.exports = {
             "insert into log set ?",
             {
               order_no: Sl_no,
-              name: restName,
-              phone: phone,
+
               date: presentDate,
-              pincode: pincode,
-              quantity: quantity,
-              action: action,
             },
             (err, opt) => {
               console.log(opt);
@@ -88,7 +84,7 @@ module.exports = {
         var date = myDate.getDate();
         var month = myDate.getMonth() + 1;
         var year = myDate.getFullYear();
-        var presentDate = date + "-" + month + "-" + year;
+        var presentDate = year + "-" + month + "-" + date;
         db.query("select * from orders where Sl_no=?", [Sl_no], (err, rows) => {
           restName = rows[0].Name;
           phone = rows[0].Phone;
@@ -100,12 +96,8 @@ module.exports = {
             "insert into log set ?",
             {
               order_no: Sl_no,
-              name: restName,
-              phone: phone,
+
               date: presentDate,
-              pincode: pincode,
-              quantity: quantity,
-              action: action,
             },
             (err, opt) => {
               console.log(opt);

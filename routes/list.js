@@ -45,17 +45,20 @@ module.exports = {
   },
   logList: (req, res) => {
     console.log(req.session);
-    db.query("Select * from log", (err, rows) => {
-      res.render("lists/history.ejs", {
-        title: "Admin Dashboard || History",
-        length: rows.length,
-        admin_prof: true,
-        rest_prof: false,
-        ngo_prof: false,
-        nav_title: "History",
-        rows,
-      });
-    });
+    db.query(
+      "select L.order_no , L.date , L.Ngo ,O.Name ,O.Quantity,O.Pincode,O.Status from log L, orders O where Sl_no = order_no",
+      (err, rows) => {
+        res.render("lists/history.ejs", {
+          title: "Admin Dashboard || History",
+          length: rows.length,
+          admin_prof: true,
+          rest_prof: false,
+          ngo_prof: false,
+          nav_title: "History",
+          rows,
+        });
+      }
+    );
   },
   restLog: (req, res) => {
     const restEmail = req.cookies.restDet.restEmail;
@@ -78,18 +81,22 @@ module.exports = {
     const ngoName = req.cookies.ngoDet.ngo_name;
     const ngoUid = req.cookies.ngoDet.ngo_uid;
     console.log(ngoName, ngoEmail, ngoUid);
-    db.query("Select * from log where Ngo = ?", [ngoName], (err, rows) => {
-      console.log(rows);
-      res.render("lists/ngo-log.ejs", {
-        title: "Ngo Log",
-        admin_prof: false,
-        rest_prof: false,
-        ngo_prof: true,
-        nav_title: "Log",
-        length: rows.length,
-        rows,
-      });
-    });
+    db.query(
+      "select L.order_no , L.date  ,O.Name ,O.Quantity from log L, orders O where Sl_no = order_no and L.Ngo = ?",
+      [ngoName],
+      (err, rows) => {
+        console.log(rows);
+        res.render("lists/ngo-log.ejs", {
+          title: "Ngo Log",
+          admin_prof: false,
+          rest_prof: false,
+          ngo_prof: true,
+          nav_title: "Log",
+          length: rows.length,
+          rows,
+        });
+      }
+    );
     console.log(req.cookies);
   },
 };

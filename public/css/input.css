@@ -1,0 +1,87 @@
+/* input */
+.material-textfield {
+  position: relative;
+  margin-top: 1rem;
+}
+label {
+  position: absolute;
+  font-size: 1rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: gray;
+  padding: 0 0.3rem;
+  margin: 0 0.5rem;
+  transition: 0.1s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
+}
+input,
+textarea {
+  width: 25rem;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1rem 0.7rem;
+  color: #080357;
+  transition: 0.1s ease-out;
+  font-weight: 700;
+}
+#edit-prof {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+input:focus,
+textarea:focus,
+#edit-prof {
+  border-color: #080357;
+}
+input:focus + label,
+textarea:focus + label {
+  color: #080357;
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
+}
+input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
+}
+.guest-desc {
+  height: 7rem;
+  width: 100%;
+}
+.submit {
+  width: 100%;
+  font-weight: 700;
+  color: #fff;
+  background-color: #080357;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+#other-sign {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.material-textfield:last-child div {
+  color: #fff;
+  background-color: #080357;
+  padding: 6px 10px;
+  flex-grow: 1;
+  flex-basis: 0;
+  cursor: pointer;
+}
+.material-textfield:last-child div a {
+  font-size: larger;
+  font-weight: 600;
+}
+.material-textfield:last-child {
+  display: flex;
+}
