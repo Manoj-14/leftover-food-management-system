@@ -1,19 +1,36 @@
-<script>
-    const quote = document.querySelector(".block-quote")
-    const quoteAuthor = document.querySelector(".quote-author")
-    async function updateQuote() {
-        // Fetch a random quote from the Quotable API
-        const response = await fetch("https://api.quotable.io/random");
-        const data = await response.json();
-        if (response.ok) {
-            // Update DOM elements
-            quote.textContent = data.content;
-            quoteAuthor.textContent = data.author;
-            console.log(data.content);
-            console.log(data.author);
-        } else {
-            console.log(data);
+<div>
+    <h3>Quote of the Day</h3>
+    <div class="quotes">
+        <div class="quote-block">
+            <blockquote class="block-quote">Loading</blockquote>
+            <cite class="quote-author"></cite>
+        </div>
+        <button id="get-quote" onclick="updateQuote()">New Quote</button>
+
+    </div>
+    <script>
+        const quote = document.querySelector(".block-quote")
+        const quoteAuthor = document.querySelector(".quote-author")
+        async function updateQuote() {
+            // Fetch a random quote from the Quotable API
+            const response = await fetch("https://api.quotable.io/random");
+            const data = await response.json();
+            if (response.ok) {
+                if (data.content.length < 100) {
+                    quotes = `" ${data.content} "`
+                    quote.textContent = quotes;
+                    author = `- ${data.author} `;
+                    quoteAuthor.textContent = author;
+                    console.log(data.content)
+                    console.log(data.content.length)
+                }
+                else {
+                    updateQuote();
+                }
+            } else {
+                quote.textContent = "Fetch Again";
+            }
         }
-    }
-    updateQuote();
-</script>
+        updateQuote();
+    </script>
+</div>

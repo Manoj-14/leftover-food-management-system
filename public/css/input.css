@@ -59,7 +59,7 @@ textarea:not(:placeholder-shown) + label {
   width: 100%;
   font-weight: 700;
   color: #fff;
-  background-color: var(--prmy-color);
+  background-color: var(--sec-color3);
   cursor: pointer;
   font-size: 1rem;
 }
@@ -74,7 +74,7 @@ textarea:not(:placeholder-shown) + label {
 
 .material-textfield:last-child div {
   color: #fff;
-  background-color: #080357;
+  background-color: var(--sec-color3);
   padding: 6px 10px;
   flex-grow: 1;
   flex-basis: 0;
@@ -86,4 +86,13 @@ textarea:not(:placeholder-shown) + label {
 }
 .material-textfield:last-child {
   display: flex;
+}
+.sub-head {
+  text-align: center;
+  padding: 5px 0;
+}
+.sub-head > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--prmy-color);
 }

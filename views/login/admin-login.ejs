@@ -3,73 +3,38 @@
     <body>
         <%- include('../partials/login-nav.ejs'); %>
             <section class="login-prof">
-                <div>
-                    <h3>Quote of the Day</h3>
-                    <div class="quotes">
-                        <div class="quote-block">
-                            <blockquote class="block-quote">Loading</blockquote>
-                            <cite class="quote-author"></cite>
-                        </div>
-                        <button id="get-quote" onclick="updateQuote()">New Quote</button>
+                <%- include('../partials/quote-script.ejs'); %>
+                    <div class="admin-log">
 
+                        <h1>Admin Login</h1>
+                        <form class="admin-login" action="AdminAuth" method="post" autocomplete="off">
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminusername" class="admin-user" type="text">
+                                <label>Username</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="adminpassword" class="admin-pass" type="password">
+                                <label>Password</label>
+                            </div>
+
+                            <div class="material-textfield">
+                                <input placeholder=" " class="submit" type="submit" value="Sign In">
+                            </div>
+                            <div class="sub-head">
+                                <spam>or</spam>
+                                <h3>Sign IN</h3>
+                                <spam>as</spam>
+                            </div>
+                            <div class="material-textfield" id="other-sign">
+                                <div class="sign-link">
+                                    <a href="/ngo-login" id="ngo">NGO</a>
+                                </div>
+                                <div class="sign-link">
+                                    <a href="/restaurant-login" id="restaurant">Restaurant</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                </div>
-                <div class="admin-log">
-
-                    <h1>Admin Login</h1>
-                    <form class="admin-login" action="AdminAuth" method="post" autocomplete="off">
-                        <div class="material-textfield">
-                            <input placeholder=" " required name="adminusername" class="admin-user" type="text">
-                            <label>Username</label>
-                        </div>
-                        <div class="material-textfield">
-                            <input placeholder=" " required name="adminpassword" class="admin-pass" type="password">
-                            <label>Password</label>
-                        </div>
-
-                        <div class="material-textfield">
-                            <input placeholder=" " class="submit" type="submit" value="Sign In">
-                        </div>
-                        <div class="sub-head">
-                            <spam>or</spam>
-                            <h3>Sign IN</h3>
-                            <spam>as</spam>
-                        </div>
-                        <div class="material-textfield" id="other-sign">
-                            <div class="sign-link">
-                                <a href="/ngo-login" id="ngo">NGO</a>
-                            </div>
-                            <div class="sign-link">
-                                <a href="/restaurant-login" id="restaurant">Restaurant</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </section>
-            <script>
-                const quote = document.querySelector(".block-quote")
-                const quoteAuthor = document.querySelector(".quote-author")
-                async function updateQuote() {
-                    // Fetch a random quote from the Quotable API
-                    const response = await fetch("https://api.quotable.io/random");
-                    const data = await response.json();
-                    if (response.ok) {
-                        if (data.content.length < 100) {
-                            quotes = `" ${data.content} "`
-                            quote.textContent = quotes;
-                            author = `- ${data.author} `;
-                            quoteAuthor.textContent = author;
-                            console.log(data.content)
-                            console.log(data.content.length)
-                        }
-                        else {
-                            updateQuote();
-                        }
-                    } else {
-                        quote.textContent = "Fetch Again";
-                    }
-                }
-                updateQuote();
-            </script>
+
     </body>

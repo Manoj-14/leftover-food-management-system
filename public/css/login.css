@@ -1,5 +1,9 @@
 /* admin */
-
+.admin-log h1 {
+  color: var(--prmy-color);
+  font-weight: 800;
+  text-align: center;
+}
 .login-prof {
   display: flex;
   align-items: center;
@@ -15,14 +19,16 @@
   flex-direction: column;
   width: 30rem;
   height: 20rem;
-  padding: 2rem;
+  /* padding: 2rem; */
   word-wrap: break-word;
   border-radius: 20px;
   margin: 1rem;
+  padding: 1rem 1rem;
 }
 .login-prof .quotes .quote-block {
-  width: 28rem;
-  height: 18rem;
+  width: 26rem;
+  height: 16rem;
+  margin: 1rem 1rem;
 }
 .quotes {
   color: var(--sec-color3);
@@ -46,7 +52,8 @@ cite {
   font-size: 2rem;
 }
 .login-prof .quotes .block-quote {
-  color: var(--sec-color1);
+  /* color: var(--prmy-color); */
+  color: black;
   font-weight: 600;
 }
 .login-prof .quotes cite {
@@ -54,4 +61,8 @@ cite {
   display: block;
   text-align: right;
   margin-right: 2rem;
+}
+#pages-nav {
+  right: 26rem;
+  
 }
