@@ -166,3 +166,13 @@ footer {
   display: flex;
   justify-content: space-evenly;
 }
+/*  */
+.success {
+  color: rgb(9, 231, 102);
+  text-align: center;
+}
+.danger {
+  color: rgb(231, 9, 57);
+  text-align: center;
+}
+/*  */

@@ -4,6 +4,7 @@ module.exports = {
   getAdminLogin: (req, res) => {
     res.render("login/admin-login.ejs", {
       title: "Admin Login",
+      status: false,
     });
   },
   getAdminAuth: (req, res) => {
@@ -18,7 +19,10 @@ module.exports = {
             res.cookie("username", adminUsername);
             res.redirect("/admin-profile");
           } else {
-            res.send("Hiii");
+            res.render("login/admin-login.ejs", {
+              title: "Admin Login",
+              status: "Invaid Cresidentials",
+            });
           }
         }
       }
@@ -30,6 +34,7 @@ module.exports = {
   getNgoLogin: (req, res) => {
     res.render("login/ngo-login.ejs", {
       title: "Ngo Login",
+      status: false,
     });
   },
   getNgoAuth: (req, res) => {
@@ -52,7 +57,10 @@ module.exports = {
               res.cookie("ngoDet", ngoLogDet);
               res.redirect("/ngo-profile");
             } else {
-              res.send("No cresidential");
+              res.render("login/ngo-login.ejs", {
+                title: "Ngo Login",
+                status: "Invaid Cresidentials",
+              });
             }
           }
         }
@@ -65,6 +73,7 @@ module.exports = {
   getRestLogin: (req, res) => {
     res.render("login/restaurant-login.ejs", {
       title: "Restaurant Login",
+      status: false,
     });
   },
 
@@ -84,7 +93,10 @@ module.exports = {
             res.cookie("restDet", restLogDet);
             res.redirect("/rest-profile");
           } else {
-            res.send("Bad cresidential");
+            res.render("login/restaurant-login.ejs", {
+              title: "Restaurant Login",
+              status: "Bad cresidential",
+            });
           }
         }
       }

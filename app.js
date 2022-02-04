@@ -7,6 +7,7 @@ const show = require("./public/js/index");
 const fetch = require("node-fetch");
 const session = require("express-session");
 const bcrypt = require("bcrypt-nodejs");
+const fileUpload = require("express-fileupload");
 require("dotenv").config();
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(fileUpload());
 app.use(cookieParser());
 //DB connection
 db.connect((err) => {

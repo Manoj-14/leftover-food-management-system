@@ -9,7 +9,7 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
-          console.log(rows[0].username);
+          console.log(rows[0]);
           res.render("profiles/admin-profile.ejs", {
             title: "admin Dashboard || Profile",
             adminUsername: rows[0].username,
@@ -18,6 +18,7 @@ module.exports = {
             adminPhone: rows[0].pho_no,
             adminPassword: rows[0].password,
             adminAddr: rows[0].address,
+            adminImg: rows[0].img_path,
             admin_prof: true,
             nav_title: "Profile",
             rest_prof: false,
@@ -94,6 +95,7 @@ module.exports = {
     const adminPhone = req.body.adminPhone;
     const adminAddr = req.body.adminAddr;
     const adminPass = req.body.adminPass;
+    console.log(req);
     try {
       db.query(
         "SELECT * FROM admin where username = ?",
@@ -115,6 +117,7 @@ module.exports = {
               adminPhone: rows[0].pho_no,
               adminPassword: rows[0].password,
               adminAddr: rows[0].address,
+              adminImg: rows[0].img_path,
               admin_prof: true,
               nav_title: "Profile",
               rest_prof: false,
@@ -154,6 +157,7 @@ module.exports = {
                   adminPassword: rows[0].password,
                   adminAddr: rows[0].address,
                   admin_prof: true,
+                  adminImg: rows[0].img_path,
                   nav_title: "Profile",
                   rest_prof: false,
                   ngo_prof: false,

@@ -6,35 +6,50 @@
                 <%- include('../partials/quote-script.ejs'); %>
                     <div class="admin-log">
                         <h1>NGO Login</h1>
-                        <form class="admin-login" action="/ngoAuth" method="post" autocomplete="off">
-                            <div class="material-textfield">
-                                <input placeholder=" " required name="ngoEmail" class="ngo-user" type="email">
-                                <label>Email</label>
-                            </div>
-                            <div class="material-textfield">
-                                <input placeholder=" " required name="ngoPassword" class="ngo-pass" type="password">
-                                <label>Password</label>
-                            </div>
+                        <% if (status) { %>
+                            <p class="danger setTimer">
+                                <%= status %>
+                            </p>
+                            <% } %>
+                                <form class="admin-login" action="/ngoAuth" method="post" autocomplete="off">
+                                    <div class="material-textfield">
+                                        <input placeholder=" " required name="ngoEmail" class="ngo-user" type="email">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="material-textfield">
+                                        <input placeholder=" " required name="ngoPassword" class="ngo-pass"
+                                            type="password">
+                                        <label>Password</label>
+                                    </div>
 
-                            <div class="material-textfield">
-                                <input placeholder=" " class="submit" type="submit" value="Sign In">
-                            </div>
-                            <div class="sub-head">
-                                <spam>or</spam>
-                                <h3>Sign IN</h3>
-                                <spam>as</spam>
-                            </div>
-                            <div class="material-textfield" id="other-sign">
-                                <div class="sign-link">
-                                    <a href="/admin-login" id="ngo">Admin</a>
-                                </div>
-                                <div class="sign-link">
-                                    <a href="/restaurant-login" id="restaurant">Restaurant</a>
-                                </div>
-                            </div>
-                        </form>
-                        <div>
+                                    <div class="material-textfield">
+                                        <input placeholder=" " class="submit" type="submit" value="Sign In">
+                                    </div>
+                                    <div class="sub-head">
+                                        <spam>or</spam>
+                                        <h3>Sign IN</h3>
+                                        <spam>as</spam>
+                                    </div>
+                                    <div class="material-textfield" id="other-sign">
+                                        <div class="sign-link">
+                                            <a href="/admin-login" id="ngo">Admin</a>
+                                        </div>
+                                        <div class="sign-link">
+                                            <a href="/restaurant-login" id="restaurant">Restaurant</a>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
             </section>
     </body>
+    <script>
+        const setTimer = document.querySelector(".setTimer");
+        console.log(setTimer)
+        const myTimeout = setTimeout(rmDisp, 5000);
+
+        function rmDisp() {
+            setTimer.style.display = "none";
+        }
+    </script>
 
     </html>
