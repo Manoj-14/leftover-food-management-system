@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const path = require("path");
 var cookieParser = require("cookie-parser");
 const show = require("./public/js/index");
-
+const fetch = require("node-fetch");
 const session = require("express-session");
 const bcrypt = require("bcrypt-nodejs");
 require("dotenv").config();

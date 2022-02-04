@@ -1,18 +1,18 @@
 <%- include('./partials/header.ejs'); %>
 
     <body>
-        <div class="wrapper">
+        <div class="wrapper" id="home">
             <nav class="nav-bar">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#about-us">About US</a></li>
-                    <li><a href="#support">Contact</a></li>
+                    <li><a href="#home"><i class="fal fa-home"></i></i>Home</a></li>
+                    <li><a href="#about-us"><i class="fal fa-info-circle"></i></i>About US</a></li>
+                    <li><a href="#support"><i class="fal fa-user-headset"></i></i>Contact</a></li>
                     <li class="drop-link">
-                        <a href="#">Sign In</a>
+                        <a href="#" id="sign-in"><i class="fal fa-sign-in"></i></i>Sign In</a>
                         <ul class="drop-nav">
-                            <li><a href="/admin-login">Admin</a></li>
-                            <li><a href="/restaurant-login">Restaurant</a></li>
-                            <li><a href="/ngo-login">NGO</a></li>
+                            <li><i class="fal fa-user-shield"></i><a href="/admin-login">Admin</a></li>
+                            <li><i class="far fa-hotel"></i><a href="/restaurant-login">Restaurant</a></li>
+                            <li><i class="fal fa-hands-helping"></i><a href="/ngo-login">NGO</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -32,28 +32,28 @@
                 <h1 class="sub-title">About US</h1>
                 <section class="card-group">
                     <div class="card">
-                        <img src="/admin.png" alt="Admin" />
+                        <img class="card-img-top admin-img" src="/admin/Manoj.jpg" alt="Admin" />
                         <div class="card-body">
                             <h3 class="card-title">Manoj M</h3>
                             <p class="card-text">ISE 5th A</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="/admin.png" alt="Admin" />
+                        <img class="card-img-top admin-img" src="/admin/jeevan.jpg" alt="Admin" />
                         <div class="card-body">
                             <h3 class="card-title">Jeevan</h3>
                             <p class="card-text">ISE 5th A</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="/admin.png" alt="Admin" />
+                        <img class="card-img-top admin-img" src="/admin/Manohar.jpg" alt="Admin" />
                         <div class="card-body">
                             <h3 class="card-title">Manohar</h3>
                             <p class="card-text">ISE 5th A</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="/admin.png" alt="Admin" />
+                        <img class="card-img-top admin-img" src="/admin/Harshitha.jpg" alt="Admin" />
                         <div class="card-body">
                             <h3 class="card-title">Harshitha</h3>
                             <p class="card-text">ISE 5th A</p>
@@ -61,16 +61,56 @@
                     </div>
                 </section>
             </main>
-            <footer id="support">
+            <section id="support">
                 <h1 class="sub-title">Contact US</h1>
-                <section class="card">
-                    <div class="card-body">
-                        <a href="mailto: manumadhu1425@gmail.com" class="card-link btn">Email Us</a>
-                        <a href="tel:+919741626527" class="card-link btn">Call</a>
-                        <a href="https://github.com/Manoj-14/waste-food-management-system" target="_blank"
-                            class="card-link btn">Github</a>
+                <form class="contact-form" action="/send-msg" method="post" autocomplete="off">
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="donorName" class="guest-name" type="text">
+                        <label>Name</label>
                     </div>
-                </section>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="donorNumber" class="guest-pass" type="number">
+                        <label>Number</label>
+                    </div>
+                    <div class="material-textfield">
+                        <textarea placeholder=" " name="discription" class="guest-desc" type="text"></textarea>
+                        <label>Discription</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " class="submit" type="submit" value="Send">
+                    </div>
+                </form>
+                <div>
+
+            </section>
+            <footer class="footer">
+                <ul>
+                    <li><a href="mailto: manumadhu1425@gmail.com" class="card-link btn">Email Us</a></li>
+                    <li><a href="tel:+919741626527" class="card-link btn">Call</a></li>
+                    <li><a href="https://github.com/Manoj-14/waste-food-management-system" target="_blank"
+                            class="card-link btn">Github</a></li>
+                </ul>
+                <ul>
+                    <p>Address:</p>
+                    <li>
+                        <address>Vidyavardhaka college of Engineering <br> Gokulam 3 <sup>rd</sup> stage <br> Mysore
+                        </address>
+                    </li>
+                </ul>
+                <ul>
+
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#support"></a>Contact US</li>
+                    <li>
+                        Sign in
+                        <ul>
+                            <li><a href="/admin-login">Admin</a></li>
+                            <li><a href="/restaurant-login">Restaurant</a></li>
+                            <li><a href="/ngo-login">NGO</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </footer>
         </div>
         <script src="index.js"></script>

@@ -1,0 +1,57 @@
+/* admin */
+
+.login-prof {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  background-image: url("/blob.svg");
+  background-repeat: no-repeat;
+  background-size: 42rem;
+}
+.login-prof .quotes {
+  background-color: var(--sec-color2);
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  height: 20rem;
+  padding: 2rem;
+  word-wrap: break-word;
+  border-radius: 20px;
+  margin: 1rem;
+}
+.login-prof .quotes .quote-block {
+  width: 28rem;
+  height: 18rem;
+}
+.quotes {
+  color: var(--sec-color3);
+  font-size: 1.5rem;
+  /* text-align: center; */
+}
+cite {
+  text-align: right;
+}
+#get-quote {
+  border: 3px solid var(--sec-color3);
+  background-color: var(--sec-color3);
+  color: var(--sec-color2);
+  font-weight: 700;
+  border-radius: 50px;
+}
+.login-prof div:first-child h3 {
+  text-align: center;
+  color: var(--sec-color2);
+  font-weight: 800;
+  font-size: 2rem;
+}
+.login-prof .quotes .block-quote {
+  color: var(--sec-color1);
+  font-weight: 600;
+}
+.login-prof .quotes cite {
+  color: var(--prmy-color);
+  display: block;
+  text-align: right;
+  margin-right: 2rem;
+}
