@@ -176,3 +176,15 @@ footer {
   text-align: center;
 }
 /*  */
+/* rest list */
+.rest-list {
+  margin: 0 4rem;
+}
+/* rest list */
+.rest-list .row-iter {
+  cursor: pointer;
+}
+.rest-list .row-iter:hover {
+  background-color: var(--sec-color3);
+  color: #fff;
+}

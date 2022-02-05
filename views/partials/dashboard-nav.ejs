@@ -7,23 +7,42 @@
     <div class="dash-nav">
         <nav>
             <ul>
-                <li id="active">
-                    <form action="admin-profile" method="POST"><button type="submit">Profile</button></form>
+
+                <li>
+                    <form action="admin-profile" method="POST"><button <% if (nav_stat=="admin-prof" ) { %>
+                            id="active"
+                            <% } %>
+                                type="submit">Profile
+                        </button></form>
+                </li>
+
+                <li>
+                    <form action="rest-list" method="POST"><button <% if (nav_stat=="admin-rest" ) { %>
+                            id="active"
+                            <% } %> type="submit">Restaurant List
+                        </button></form>
                 </li>
                 <li>
-                    <form action="rest-list" method="POST"><button type="submit">Restaurant List</button></form>
+                    <form action="ngo-list" method="POST"><button <% if (nav_stat=="admin-ngo" ) { %>
+                            id="active"
+                            <% } %> type="submit">NGO List
+                        </button></form>
                 </li>
                 <li>
-                    <form action="ngo-list" method="POST"><button type="submit">NGO List</button></form>
+                    <form action="orders" method="POST"><button <% if (nav_stat=="admin-order" ) { %>
+                            id="active"
+                            <% } %> type="submit">Orders
+                        </button></form>
                 </li>
                 <li>
-                    <form action="orders" method="POST"><button type="submit">Orders</button></form>
+                    <form action="history" method="POST"><button <% if (nav_stat=="admin-log" ) { %>
+                            id="active"
+                            <% } %> type="submit">Logs
+                        </button></form>
                 </li>
                 <li>
-                    <form action="history" method="POST"><button type="submit">Logs</button></form>
-                </li>
-                <li>
-                    <form action="/" method="POST"><button type="submit">Logout</button></form>
+                    <form action="/" method="POST"><button type="submit">Logout
+                        </button></form>
                 </li>
             </ul>
         </nav>
@@ -34,14 +53,21 @@
             <div class="dash-nav">
                 <nav>
                     <ul>
-                        <li id="active">
-                            <form action="rest-profile" method="POST"><button type="submit">Home</button></form>
+                        <li>
+                            <form action="rest-profile" method="POST"><button <% if (nav_stat=="rest-prof" ) { %>
+                                    id="active"
+                                    <% } %> type="submit">Home
+                                </button></form>
                         </li>
                         <li>
-                            <form action="rest-log" method="POST"><button type="submit">Logs</button></form>
+                            <form action="rest-log" method="POST"><button <% if (nav_stat=="rest-log" ) { %>
+                                    id="active"
+                                    <% } %> type="submit">Logs
+                                </button></form>
                         </li>
                         <li>
-                            <form action="/" method="POST"><button type="submit">Logout</button></form>
+                            <form action="/" method="POST"><button type="submit">Logout
+                                </button></form>
                         </li>
                     </ul>
                 </nav>
@@ -52,11 +78,17 @@
                     <div class="dash-nav">
                         <nav>
                             <ul>
-                                <li id="active">
-                                    <form action="ngo-profile" method="POST"><button type="submit">Home</button></form>
+                                <li>
+                                    <form action="ngo-profile" method="POST"><button <% if (nav_stat=="ngo-prof" ) { %>
+                                            id="active"
+                                            <% } %> type="submit">Home
+                                        </button></form>
                                 </li>
                                 <li>
-                                    <form action="ngo-log" method="POST"><button type="submit">Logs</button></form>
+                                    <form action="ngo-log" method="POST"><button <% if (nav_stat=="ngo-log" ) { %>
+                                            id="active"
+                                            <% } %> type="submit">Logs
+                                        </button></form>
                                 </li>
                                 <li>
                                     <form action="/" method="POST"><button type="submit">Logout</button></form>

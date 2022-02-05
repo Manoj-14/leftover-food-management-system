@@ -19,17 +19,17 @@
   margin: 0 !important;
 }
 .dash-nav nav ul button {
-  background-color: var(--sec-color2);
   border: none;
   padding: 3px 10px;
   font-weight: 600;
-  transition: background-color 500ms linear;
+  transition: background-color 300ms linear;
   border-radius: 10px;
-}
-.dash-nav nav ul button:hover {
-  background-color: var(--sec-color3);
   background-color: var(--prmy-color);
   color: var(--sec-color2);
+}
+.dash-nav nav ul button:hover {
+  background-color: var(--sec-color2);
+  color: var(--ter-color2);
 }
 
 .disp-prof {
@@ -54,4 +54,8 @@
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--prmy-color);
+}
+#active {
+  background-color: var(--sec-color2);
+  color: var(--ter-color2);
 }

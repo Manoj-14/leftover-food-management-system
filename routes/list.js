@@ -7,6 +7,7 @@ module.exports = {
         admin_prof: true,
         rest_prof: false,
         ngo_prof: false,
+        nav_stat: "admin-rest",
         nav_title: "Restaurents list",
         rows,
       });
@@ -20,6 +21,7 @@ module.exports = {
         admin_prof: true,
         nav_title: "NGO's list",
         rest_prof: false,
+        nav_stat: "admin-ngo",
         ngo_prof: false,
         rows,
       });
@@ -38,6 +40,7 @@ module.exports = {
           rest_prof: false,
           ngo_prof: false,
           nav_title: "Orders",
+          nav_stat: "admin-order",
           rows,
         });
       }
@@ -46,7 +49,7 @@ module.exports = {
   logList: (req, res) => {
     console.log(req.session);
     db.query(
-      "select L.order_no , L.date , L.Ngo ,O.Name ,O.Quantity,O.Pincode,O.Status from log L, orders O where Sl_no = order_no",
+      "select L.order_no , L.date , L.Ngo ,O.Name ,O.Quantity,O.Pincode,O.Status from log L, orders O where Sl_no = order_no order by Sl_no DESC",
       (err, rows) => {
         res.render("lists/history.ejs", {
           title: "Admin Dashboard || History",
@@ -54,6 +57,7 @@ module.exports = {
           admin_prof: true,
           rest_prof: false,
           ngo_prof: false,
+          nav_stat: "admin-log",
           nav_title: "History",
           rows,
         });
@@ -71,6 +75,7 @@ module.exports = {
         rest_prof: true,
         ngo_prof: false,
         nav_title: "Log",
+        nav_stat: "rest-log",
         length: rows.length,
         rows,
       });
@@ -92,6 +97,7 @@ module.exports = {
           rest_prof: false,
           ngo_prof: true,
           nav_title: "Log",
+          nav_stat: "ngo-log",
           length: rows.length,
           rows,
         });

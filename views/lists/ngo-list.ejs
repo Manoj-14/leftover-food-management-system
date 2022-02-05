@@ -6,6 +6,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">S/N</th>
                             <th scope="col">NGO UID</th>
                             <th scope="col">Ngo Name</th>
                             <th scope="col">Address</th>
@@ -17,7 +18,10 @@
                     <tbody>
                         <%if(length> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
-                                <tr>
+                                <tr class="row-iter">
+                                    <th scope="row">
+                                        <%= index+1%>
+                                    </th>
                                     <th scope="row">
                                         <%= rows.ngo_unique_id%>
                                     </th>
@@ -38,7 +42,11 @@
                                     </td>
                                 </tr>
                                 <%})%>
-                                    <%}%>
+                                <%} else { %>
+                                    <tr>
+                                        <td> Not Allowed </td>
+                                    </tr>
+                                    <% } %>
                     </tbody>
                 </table>
             </div>

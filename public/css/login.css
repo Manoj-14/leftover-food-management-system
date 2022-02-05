@@ -39,12 +39,65 @@ cite {
   text-align: right;
 }
 #get-quote {
-  border: 3px solid var(--sec-color3);
-  background-color: var(--sec-color3);
   color: var(--sec-color2);
   font-weight: 700;
   border-radius: 50px;
 }
+
+.hvr-shutter-out-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  /* border: 3px solid var(--ter-color2); */
+  background-color: var(--sec-color2);
+  border: none;
+  border: 3px solid var(--ter-color2);
+  transition: border 500ms linear;
+  border-radius: 20px;
+}
+
+.hvr-shutter-out-horizontal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 3px solid var(--ter-color2);
+  background: var(--ter-color2);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  border-radius: 20px;
+}
+.hvr-shutter-out-horizontal:hover,
+.hvr-shutter-out-horizontal:focus,
+.hvr-shutter-out-horizontal:active {
+  color: white;
+  border: 3px solid transparent;
+}
+.hvr-shutter-out-horizontal:hover:before,
+.hvr-shutter-out-horizontal:focus:before,
+.hvr-shutter-out-horizontal:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
 .login-prof div:first-child h3 {
   text-align: center;
   color: var(--sec-color2);
@@ -64,5 +117,4 @@ cite {
 }
 #pages-nav {
   right: 26rem;
-  
 }

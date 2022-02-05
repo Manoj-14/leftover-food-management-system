@@ -19,6 +19,7 @@ module.exports = {
             adminPassword: rows[0].password,
             adminAddr: rows[0].address,
             adminImg: rows[0].img_path,
+            nav_stat: "admin-prof",
             admin_prof: true,
             nav_title: "Profile",
             rest_prof: false,
@@ -50,6 +51,7 @@ module.exports = {
           restPhone: rows[0].rest_phone,
           restLoc: rows[0].rest_loc,
           restPin: rows[0].rest_pin,
+          nav_stat: "rest-prof",
         });
       }
     );
@@ -77,6 +79,7 @@ module.exports = {
               ngoLoc: results[0].ngo_address,
               ngoPin: results[0].ngo_pincode,
               length: rows.length,
+              nav_stat: "ngo-prof",
               nav_title: "NGO Dashboard",
               admin_prof: false,
               rest_prof: false,
@@ -118,8 +121,10 @@ module.exports = {
               adminPassword: rows[0].password,
               adminAddr: rows[0].address,
               adminImg: rows[0].img_path,
+              nav_stat: "admin-prof",
               admin_prof: true,
               nav_title: "Profile",
+
               rest_prof: false,
               ngo_prof: false,
               uptMsg: false,
@@ -158,6 +163,7 @@ module.exports = {
                   adminAddr: rows[0].address,
                   admin_prof: true,
                   adminImg: rows[0].img_path,
+                  nav_stat: "admin-prof",
                   nav_title: "Profile",
                   rest_prof: false,
                   ngo_prof: false,

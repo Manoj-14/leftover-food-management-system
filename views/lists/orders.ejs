@@ -23,7 +23,7 @@
                         <%if(length> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
                                 <form class="col-md-2" method="post">
-                                    <tr>
+                                    <tr class="row-iter">
                                         <th scope="row" class="row-data">
                                             <input name="id" readonly value="<%= rows.Sl_no%>" />
                                         </th>
@@ -52,7 +52,12 @@
                                     </tr>
                                 </form>
                                 <%})%>
-                                    <%}%>
+                                    <%} else { %>
+                                        <tr>
+                                            <td> Not Allowed </td>
+                                        </tr>
+                                        <% } %>
+
 
                     </tbody>
                 </table>
