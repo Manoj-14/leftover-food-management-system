@@ -51,6 +51,7 @@ module.exports = {
     db.query(
       "select L.order_no , L.date , L.Ngo ,O.Name ,O.Quantity,O.Pincode,O.Status from log L, orders O where Sl_no = order_no order by Sl_no DESC",
       (err, rows) => {
+        console.log(rows[0].date);
         res.render("lists/history.ejs", {
           title: "Admin Dashboard || History",
           length: rows.length,
