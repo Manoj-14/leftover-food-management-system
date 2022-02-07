@@ -27,7 +27,6 @@ module.exports = {
         }
       }
     );
-    console.log(req.cookies);
   },
 
   //Ngo
@@ -104,6 +103,7 @@ module.exports = {
   },
   restOrd: (req, res) => {
     const restEmail = req.cookies.restDet.restEmail;
+    const desc = req.body.discription;
     const quantity = req.body.foodQuantity;
     db.query(
       "Select rest_name, rest_phone , rest_pin from restaurant where rest_email = ?",
@@ -112,6 +112,14 @@ module.exports = {
         restName = rows[0].rest_name;
         restPhone = rows[0].rest_phone;
         restPin = rows[0].rest_pin;
+        db.query("insert into donors set ?", {
+          Name: restName,
+          Phone: restPhone,
+          Quantity: quantity,
+          Pincode: restPin,
+          Email: restEmail,
+          desc: desc,
+        });
         db.query(
           "insert into orders set ?",
           {
@@ -144,7 +152,7 @@ module.exports = {
     const quantity = req.body.foodQuantity;
     const desc = req.body.discription;
     db.query("INSERT INTO guestlogin SET ?  ", {
-      name: guestName,
+      name: guestName + "(Guest)",
       number: guestNumber,
       address: guestAddr,
       pincode: donPin,
@@ -162,5 +170,8 @@ module.exports = {
       stsMsg: "Sent Successfully",
     });
   },
-  logOut: (req, res) => {},
+  adminlogOut: (req, res) => {
+    res.clearCookie("username");
+    res.redirect("admin-login");
+  },
 };

@@ -1,34 +1,41 @@
 module.exports = {
   getAdmindash: (req, res) => {
     console.log(req.cookies);
-    adminUser = req.cookies.username;
-    db.query(
-      "Select * from admin where username  = ?",
-      [adminUser],
-      (err, rows) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(rows[0]);
-          res.render("profiles/admin-profile.ejs", {
-            title: "admin Dashboard || Profile",
-            adminUsername: rows[0].username,
-            adminName: rows[0].name,
-            adminEmail: rows[0].email,
-            adminPhone: rows[0].pho_no,
-            adminPassword: rows[0].password,
-            adminAddr: rows[0].address,
-            adminImg: rows[0].img_path,
-            nav_stat: "admin-prof",
-            admin_prof: true,
-            nav_title: "Profile",
-            rest_prof: false,
-            ngo_prof: false,
-            uptMsg: false,
-          });
+    if (req.cookies.username == undefined) {
+      res.render("login/admin-login.ejs", {
+        title: "Admin Login",
+        status: "Please login again",
+      });
+    } else {
+      adminUser = req.cookies.username;
+      db.query(
+        "Select * from admin where username  = ?",
+        [adminUser],
+        (err, rows) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(rows[0]);
+            res.render("profiles/admin-profile.ejs", {
+              title: "admin Dashboard || Profile",
+              adminUsername: rows[0].username,
+              adminName: rows[0].name,
+              adminEmail: rows[0].email,
+              adminPhone: rows[0].pho_no,
+              adminPassword: rows[0].password,
+              adminAddr: rows[0].address,
+              adminImg: rows[0].img_path,
+              nav_stat: "admin-prof",
+              admin_prof: true,
+              nav_title: "Profile",
+              rest_prof: false,
+              ngo_prof: false,
+              uptMsg: false,
+            });
+          }
         }
-      }
-    );
+      );
+    }
   },
   getRestDash: (req, res) => {
     restName = req.cookies.restDet.restName;

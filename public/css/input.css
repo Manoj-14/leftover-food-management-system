@@ -79,6 +79,7 @@ textarea:not(:placeholder-shown) + label {
   flex-grow: 1;
   flex-basis: 0;
   cursor: pointer;
+  border-radius: 10px;
 }
 .material-textfield:last-child div a {
   font-size: larger;

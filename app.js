@@ -62,6 +62,7 @@ const {
   getRestAuth,
   restOrd,
   getNgoAuth,
+  adminlogOut,
 } = require("./routes/login");
 const {
   getAdmindash,
@@ -94,6 +95,7 @@ app.all("/guest-reg", guestReg);
 app.all("/AdminAuth", getAdminAuth);
 app.all("/restAuth", getRestAuth);
 app.all("/ngoAuth", getNgoAuth);
+app.all("/logOut", adminlogOut);
 
 //dashboard
 app.all("/Admin-profile", getAdmindash);

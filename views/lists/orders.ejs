@@ -11,10 +11,12 @@
                     <thead>
                         <tr>
                             <th scope="col">Order no</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Message</th>
                             <th scope="col">Status</th>
                             <th scope="col" class="tect-center">Action</th>
                         </tr>
@@ -25,16 +27,22 @@
                                 <form class="col-md-2" method="post">
                                     <tr class="row-iter">
                                         <th scope="row" class="row-data">
-                                            <input name="id" readonly value="<%= rows.Sl_no%>" />
+                                            <input name="id" class="sl-inp" readonly value="<%= rows.Sl_no%>" />
                                         </th>
                                         <td class="row-data">
-                                            <%= rows.Name%>
+                                            <%= rows.name%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.name%>
                                         </td>
                                         <td class="row-data">
                                             <%= rows.Phone%>
                                         </td>
                                         <td class="row-data">
                                             <%= rows.Quantity%>
+                                        </td>
+                                        <td class="row-data">
+                                            <%= rows.Pincode%>
                                         </td>
                                         <td class="row-data">
                                             <%= rows.Pincode%>

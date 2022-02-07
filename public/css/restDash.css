@@ -25,3 +25,6 @@
 .row-data {
   background-color: black;
 }
+.sl-inp {
+  width: 4rem !important;
+}
