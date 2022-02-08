@@ -51,9 +51,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">Order no</th>
+                                <th scope="col">Ordered Date</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Quantity</th>
+                                <th scope="col">Message</th>
                                 <th scope="col">Pincode</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -62,10 +64,13 @@
                             <%if(length> 0) { %>
                                 <% rows.forEach((rows, index)=> { %>
                                     <form class="col-md-2" action="/accept" class="aprove-form" method="post">
-                                        <tr id="<%=index + 1 %>">
+                                        <tr class="row-iter" id="<%=index + 1 %>">
                                             <th scope="row" class="row-data">
-                                                <input name="id" readonly value="<%= rows.Sl_no%>" />
+                                                <input name="id" class="sl-inp" readonly value="<%= rows.order_no%>" />
                                             </th>
+                                            <td class="row-data">
+                                                <%= rows.ordered_date%>
+                                            </td>
                                             <td class="row-data">
                                                 <%= rows.Name%>
                                             </td>
@@ -74,6 +79,9 @@
                                             </td class="row-data">
                                             <td class="row-data">
                                                 <%= rows.Quantity%>
+                                            </td>
+                                            <td class="row-data">
+                                                <%= rows.desc%>
                                             </td>
                                             <td class="row-data">
                                                 <%= rows.Pincode%>

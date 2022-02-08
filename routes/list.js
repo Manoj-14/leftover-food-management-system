@@ -49,9 +49,10 @@ module.exports = {
       });
     } else {
       db.query(
-        "Select * from orders where status = ?",
+        "select O.order_no,D.Date,D.Name , D.Phone ,D.Quantity,D.Pincode,D.desc,O.status from orders O,donors D WHERE O.order_no = D.SEND_ID and status = ?",
         ["Waiting for admin"],
         (err, rows) => {
+          console.log(rows);
           res.render("lists/orders.ejs", {
             title: "Admin Dashboard || Orders",
             length: rows.length,
@@ -75,10 +76,10 @@ module.exports = {
     } else {
       const username = req.cookies.username;
       db.query(
-        "Select L.order_no , L.date , L.ngo_uid ,O.name ,O.Quantity,O.Pincode,O.Status,N.Name from log L, orders O,ngo N where Sl_no = order_no and N.ngo_unique_id = L.ngo_uid  and L.username=? order by Sl_no DESC",
-        [username],
+        "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,'Not Accepted' as ngo  from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid is NULL and O.aproved_admin = ? UNION SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,N.Name from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and O.aproved_admin = ?",
+        [username, username],
         (err, rows) => {
-          console.log(rows);
+          console.log(err);
           res.render("lists/history.ejs", {
             title: "Admin Dashboard || History",
             length: rows.length,
@@ -96,19 +97,28 @@ module.exports = {
   restLog: (req, res) => {
     const restEmail = req.cookies.restDet.restEmail;
     const restName = req.cookies.restDet.restName;
-    db.query("select * from orders where name = ?", [restName], (err, rows) => {
-      console.log(rows);
-      res.render("lists/rest-log.ejs", {
-        title: "Rest Log",
-        admin_prof: false,
-        rest_prof: true,
-        ngo_prof: false,
-        nav_title: "Log",
-        nav_stat: "rest-log",
-        length: rows.length,
-        rows,
-      });
-    });
+    console.log(req.cookies.restDet);
+    db.query(
+      "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,'Not Accepted' as ngo  from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid is NULL and  D.Name = ? UNION SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,N.Name from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and  D.Name = ?",
+      [restName, restName],
+      (err, rows) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rows);
+          res.render("lists/rest-log.ejs", {
+            title: "Rest Log",
+            admin_prof: false,
+            rest_prof: true,
+            ngo_prof: false,
+            nav_title: "Log",
+            nav_stat: "rest-log",
+            length: rows.length,
+            rows,
+          });
+        }
+      }
+    );
   },
   ngoLog: (req, res) => {
     const ngoEmail = req.cookies.ngoDet.ngo_email;
@@ -116,7 +126,7 @@ module.exports = {
     const ngoUid = req.cookies.ngoDet.ngo_uid;
     console.log(ngoName, ngoEmail, ngoUid);
     db.query(
-      "select L.order_no , L.date  ,O.Name ,O.Quantity from log L, orders O where Sl_no = order_no and L.ngo_uid = ?",
+      "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid = ?",
       [ngoUid],
       (err, rows) => {
         console.log(rows);

@@ -112,25 +112,33 @@ module.exports = {
         restName = rows[0].rest_name;
         restPhone = rows[0].rest_phone;
         restPin = rows[0].rest_pin;
-        db.query("insert into donors set ?", {
-          Name: restName,
-          Phone: restPhone,
-          Quantity: quantity,
-          Pincode: restPin,
-          Email: restEmail,
-          desc: desc,
-        });
         db.query(
-          "insert into orders set ?",
+          "insert into donors set ?",
           {
             Name: restName,
             Phone: restPhone,
             Quantity: quantity,
             Pincode: restPin,
-            email: restEmail,
+            Email: restEmail,
+            desc: desc,
           },
-          (err, results) => {
-            res.redirect("/rest-profile");
+          (err, rows) => {
+            if (err) {
+              console.log(err);
+            } else {
+              db.query("SELECT LAST_INSERT_ID() as id", (err, result) => {
+                const orderId = result[0].id;
+                db.query(
+                  "insert into orders set ?",
+                  {
+                    order_no: orderId,
+                  },
+                  (err, results) => {
+                    res.redirect("/rest-profile");
+                  }
+                );
+              });
+            }
           }
         );
       }
@@ -169,6 +177,10 @@ module.exports = {
       title: "Guest Donor",
       stsMsg: "Sent Successfully",
     });
+  },
+  adminlogOut: (req, res) => {
+    res.clearCookie("username");
+    res.redirect("admin-login");
   },
   adminlogOut: (req, res) => {
     res.clearCookie("username");

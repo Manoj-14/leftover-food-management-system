@@ -74,9 +74,10 @@ module.exports = {
           console.log(err);
         }
         db.query(
-          "Select * from orders where status = ?",
+          "select O.ordered_date,O.order_no,D.desc ,O.status ,D.Name ,D.Phone , D.Pincode,D.Quantity from donors D,orders O WHERE D.SEND_ID = O.order_no and O.status = ?",
           ["waiting for NGO"],
           (err, rows) => {
+            console.log(rows);
             res.render("profiles/ngo-profile.ejs", {
               title: "NGO Dashboard",
               ngoUid: results[0].ngo_unique_id,

@@ -10,6 +10,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">status</th>
+                            <th scope="col">Ngo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -17,7 +18,7 @@
                             <% rows.forEach((rows, index)=> { %>
                                 <tr class="row-iter">
                                     <th scope="row">
-                                        <%= rows.Sl_no%>
+                                        <%= rows.SEND_ID%>
                                     </th>
                                     <td>
                                         <%= rows.date%>
@@ -26,7 +27,10 @@
                                         <%= rows.Quantity%>
                                     </td>
                                     <td>
-                                        <%= rows.Status%>
+                                        <%= rows.status%>
+                                    </td>
+                                    <td>
+                                        <%= rows.ngo%>
                                     </td>
                                 </tr>
                                 <%})%>
