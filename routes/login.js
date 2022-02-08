@@ -159,24 +159,51 @@ module.exports = {
     const donPin = req.body.donorPin;
     const quantity = req.body.foodQuantity;
     const desc = req.body.discription;
-    db.query("INSERT INTO guestlogin SET ?  ", {
-      name: guestName + "(Guest)",
-      number: guestNumber,
-      address: guestAddr,
-      pincode: donPin,
-      quantity: quantity,
-      description: desc,
-    });
-    db.query("INSERT INTO orders set ?", {
-      name: guestName,
-      phone: guestNumber,
-      pincode: donPin,
-      quantity: quantity,
-    });
-    res.render("login/guest-don.ejs", {
-      title: "Guest Donor",
-      stsMsg: "Sent Successfully",
-    });
+    db.query(
+      "INSERT INTO guestlogin SET ?  ",
+      {
+        name: guestName + "(Guest)",
+        number: guestNumber,
+        address: guestAddr,
+        pincode: donPin,
+        quantity: quantity,
+        description: desc,
+      },
+      (err, rows) => {
+        db.query(
+          "insert into donors set ?",
+          {
+            Name: guestName + "(Guest)",
+            Phone: guestNumber,
+            Quantity: quantity,
+            Pincode: donPin,
+            // Email: restEmail,
+            desc: desc,
+          },
+          (err, results) => {
+            if (err) {
+              console.log(err);
+            } else {
+              db.query("SELECT LAST_INSERT_ID() as id", (err, result) => {
+                const orderId = result[0].id;
+                db.query(
+                  "insert into orders set ?",
+                  {
+                    order_no: orderId,
+                  },
+                  (err, results) => {
+                    res.render("login/guest-don.ejs", {
+                      title: "Guest Donor",
+                      stsMsg: "Sent Successfully",
+                    });
+                  }
+                );
+              });
+            }
+          }
+        );
+      }
+    );
   },
   adminlogOut: (req, res) => {
     res.clearCookie("username");

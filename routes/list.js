@@ -79,17 +79,21 @@ module.exports = {
         "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,'Not Accepted' as ngo  from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid is NULL and O.aproved_admin = ? UNION SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,N.Name from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and O.aproved_admin = ?",
         [username, username],
         (err, rows) => {
-          console.log(err);
-          res.render("lists/history.ejs", {
-            title: "Admin Dashboard || History",
-            length: rows.length,
-            admin_prof: true,
-            rest_prof: false,
-            ngo_prof: false,
-            nav_stat: "admin-log",
-            nav_title: "History",
-            rows,
-          });
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(rows);
+            res.render("lists/history.ejs", {
+              title: "Admin Dashboard || History",
+              length: rows.length,
+              admin_prof: true,
+              rest_prof: false,
+              ngo_prof: false,
+              nav_stat: "admin-log",
+              nav_title: "History",
+              rows,
+            });
+          }
         }
       );
     }

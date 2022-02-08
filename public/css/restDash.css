@@ -1,7 +1,8 @@
 .rest-dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .prof-det {
@@ -13,6 +14,11 @@
 .prof-det spam {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.prof-attr spam:first-child {
+  color: var(--ter-color2);
+  font-size: 1.8rem;
 }
 .prof-attr spam + spam {
   border-bottom: 3px solid #ff9f1c;

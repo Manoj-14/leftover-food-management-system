@@ -188,3 +188,9 @@ footer {
   background-color: var(--sec-color3);
   color: #fff;
 }
+#guest-reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
