@@ -6,6 +6,10 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -253,4 +257,25 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.sub-nav-title {
+  padding-top: 0px !important;
+}
+.row-data .sl-inp {
+  border: none;
+  width: max-content !important;
+  height: min-content !important;
+  padding: 0 !important;
+  background-color: transparent;
+  color: inherit;
+}
+.add-rest {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+.disp-rest {
+  display: flex !important;
 }

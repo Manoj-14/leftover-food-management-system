@@ -14,14 +14,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%if(length> 0) { %>
+                        <%if(rowsLen> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
                                 <tr class="row-iter">
                                     <th scope="row">
                                         <%= rows.SEND_ID%>
                                     </th>
                                     <td>
-                                        <%= rows.date%>
+                                        <%= rows.date.toDateString()%>
                                     </td>
                                     <td>
                                         <%= rows.Quantity%>
@@ -35,7 +35,50 @@
                                 </tr>
                                 <%})%>
                                     <%} else {%>
-                                        <p>Empty</p>
+                                        <tr>
+                                            <th colspan="4" style="text-align: center;">Empty</th>
+                                        </tr>
+                                        <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="rest-list" class="rest-list">
+                <h2 class="dash-nav-title " style="padding-top: 0;">
+                    Pending Aprovals
+                </h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Request No</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%if(resLen> 0) { %>
+                            <% results.forEach((results, index)=> { %>
+                                <tr class="row-iter">
+                                    <th scope="row">
+                                        <%= results.order_no %>
+                                    </th>
+                                    <td>
+                                        <%= results.ordered_Date.toDateString()%>
+                                    </td>
+                                    <td>
+                                        <%= results.Quantity%>
+                                    </td>
+                                    <td>
+                                        <%= results.status%>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                    <%} else {%>
+                                        <tr>
+                                            <th colspan="4" style="text-align: center;">Empty</th>
+                                        </tr>
+
                                         <%}%>
 
                     </tbody>

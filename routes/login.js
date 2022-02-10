@@ -213,4 +213,43 @@ module.exports = {
     res.clearCookie("username");
     res.redirect("admin-login");
   },
+  addReg: (req, res) => {
+    db.query(
+      "insert into restaurant set ?",
+      {
+        rest_name: req.body.restName,
+        rest_email: req.body.restEmail,
+        rest_phone: req.body.restNumber,
+        rest_loc: req.body.restAddress,
+        rest_pin: req.body.restPin,
+      },
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("rest-list");
+        }
+      }
+    );
+  },
+  addNgo: (req, res) => {
+    db.query(
+      "insert into ngo set ?",
+      {
+        Name: req.body.ngoName,
+        ngo_unique_id: req.body.ngoUid,
+        ngo_address: req.body.ngoAddress,
+        ngo_pincode: req.body.ngoPin,
+        ngo_email: req.body.ngoEmail,
+        ngo_phone: req.body.ngoNumber,
+      },
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("ngo-list");
+        }
+      }
+    );
+  },
 };

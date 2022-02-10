@@ -63,6 +63,8 @@ const {
   restOrd,
   getNgoAuth,
   adminlogOut,
+  addReg,
+  addNgo,
 } = require("./routes/login");
 const {
   getAdmindash,
@@ -78,7 +80,13 @@ const {
   restLog,
   ngoLog,
 } = require("./routes/list");
-const { ngoAprove, adminAprove, adminReject } = require("./routes/aprove-btns");
+const {
+  ngoAprove,
+  adminAprove,
+  adminReject,
+  delrest,
+  delngo,
+} = require("./routes/aprove-btns");
 // index page
 app.all("/", (req, res) => {
   res.render("index.ejs", {
@@ -96,6 +104,8 @@ app.all("/AdminAuth", getAdminAuth);
 app.all("/restAuth", getRestAuth);
 app.all("/ngoAuth", getNgoAuth);
 app.all("/logOut", adminlogOut);
+app.all("/rest-reg", addReg);
+app.all("/ngo-reg", addNgo);
 
 //dashboard
 app.all("/Admin-profile", getAdmindash);
@@ -117,6 +127,8 @@ app.all("/acceptOrd", adminAprove);
 app.all("/rejectOrd", adminReject);
 app.all("/admin-update", adminProfUp);
 
+app.all("/delete-rest", delrest);
+app.all("/delete-ngo", delngo);
 //Listening Port
 app.listen(port, () => {
   console.log(`Listening to Port ${port}`);

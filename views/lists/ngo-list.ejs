@@ -13,43 +13,99 @@
                             <th scope="col">Pincode</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
+                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%if(length> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
-                                <tr class="row-iter">
-                                    <th scope="row">
-                                        <%= index+1%>
-                                    </th>
-                                    <th scope="row">
-                                        <%= rows.ngo_unique_id%>
-                                    </th>
-                                    <td>
-                                        <%= rows.Name%>
-                                    </td>
-                                    <td>
-                                        <%= rows.ngo_address%>
-                                    </td>
-                                    <td>
-                                        <%= rows.ngo_pincode%>
-                                    </td>
-                                    <td>
-                                        <%= rows.ngo_email%>
-                                    </td>
-                                    <td>
-                                        <%= rows.ngo_phone%>
-                                    </td>
-                                </tr>
+                                <form action="/delete-ngo" method="delete">
+                                    <tr class="row-iter">
+                                        <th scope="row">
+                                            <%= index+1%>
+
+                                        </th>
+                                        <td class="row-data">
+                                            <input name="restEmail" class="sl-inp" value="<%= rows.ngo_unique_id%>"
+                                                readonly />
+
+                                        </td>
+                                        <td>
+                                            <%= rows.Name%>
+                                        </td>
+                                        <td>
+                                            <%= rows.ngo_address%>
+                                        </td>
+                                        <td>
+                                            <%= rows.ngo_pincode%>
+                                        </td>
+                                        <td>
+                                            <%= rows.ngo_email%>
+                                        </td>
+                                        <td>
+                                            <%= rows.ngo_phone%>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-alert "><i style="color: red;"
+                                                    class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </form>
                                 <%})%>
-                                    <%} else { %>
+                                    <%} else {%>
                                         <tr>
-                                            <td> Not Allowed </td>
+                                            <th colspan="7" style="text-align: center;">Empty</th>
                                         </tr>
-                                        <% } %>
+                                        <%}%>
                     </tbody>
+                    <tr>
+                        <td colspan="8" style="text-align: center;border:none;">
+                            <button class=" btn btn-primary  " onclick="dispReg()"><i class="fa  fa-plus "
+                                    style="padding-right: 10px;"></i>NGO</button>
+                        </td>
+                    </tr>
                 </table>
             </div>
+            <div class="add-rest ">
+                <h2 class="dash-nav-title " style="padding-top: 0;">
+                    Add Restaurant
+                </h2>
+                <form class="admin-login" action="/ngo-reg" method="post" autocomplete="off">
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoName" class="guest-name" type="text">
+                        <label>NGO Name</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoUid" class="guest-name" type="text">
+                        <label>NGO UID</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoNumber" class="guest-pass" type="number">
+                        <label>Number</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoAddress" class="guest-addr" type="text">
+                        <label>Address</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoPin" maxlength="6" class="guest-quan" type="number">
+                        <label>Area Pincode</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="ngoEmail" class="guest-quan" type="email">
+                        <label>Email</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " class="submit" type="submit" value="Add">
+                    </div>
+                </form>
+            </div>
     </body>
+    <script>
+        const restReg = document.querySelector('.add-rest');
+        dispReg = () => {
+            restReg.classList.toggle("disp-rest")
+        }
+    </script>
 
     </html>

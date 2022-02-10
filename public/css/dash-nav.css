@@ -7,6 +7,7 @@
   width: 100%;
   height: 3.5rem;
   background-color: var(--prmy-color);
+  position: fixed;
 }
 .dash-nav nav ul {
   width: 100%;
@@ -51,6 +52,8 @@
 .dash-nav-title {
   text-align: center;
   margin: 2rem;
+  margin-top: 0;
+  padding-top: 5rem;
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--prmy-color);

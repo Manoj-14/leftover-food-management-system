@@ -23,7 +23,7 @@
                                         <%= rows.SEND_ID%>
                                     </th>
                                     <td>
-                                        <%= rows.date%>
+                                        <%= rows.date.toDateString()%>
                                     </td>
                                     <td>
                                         <%= rows.Name%>
@@ -42,11 +42,11 @@
                                     </td>
                                 </tr>
                                 <%})%>
-                                    <%} else { %>
+                                    <%} else {%>
                                         <tr>
-                                            <td> Not Allowed </td>
+                                            <th colspan="7" style="text-align: center;">Empty</th>
                                         </tr>
-                                        <% } %>
+                                        <%}%>
                     </tbody>
                 </table>
             </div>

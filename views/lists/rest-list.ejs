@@ -11,34 +11,92 @@
                             <th scope="col">Address</th>
                             <th scope="col">Pincode</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%if(length> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
-                                <tr class="row-iter">
-                                    <th scope="row">
-                                        <%= index+1 %>
-                                    </th>
-                                    <th scope="row">
-                                        <%= rows.rest_name%>
-                                    </th>
-                                    <td>
-                                        <%= rows.rest_loc%>
-                                    </td>
-                                    <td>
-                                        <%= rows.rest_pin%>
-                                    </td>
-                                    <td>
-                                        <%= rows.rest_email%>
-                                    </td>
-                                </tr>
+                                <form action="/delete-rest" method="delete">
+                                    <tr class="row-iter">
+                                        <th scope="row">
+                                            <%= index+1 %>
+                                        </th>
+                                        <th scope="row">
+                                            <%= rows.rest_name%>
+                                        </th>
+                                        <td>
+                                            <%= rows.rest_loc%>
+                                        </td>
+                                        <td>
+                                            <%= rows.rest_pin%>
+                                        </td>
+                                        <td class="row-data">
+                                            <input name="restEmail" class="sl-inp" value="<%= rows.rest_email%>"
+                                                readonly />
+
+                                        </td>
+                                        <td>
+                                            <!-- <i class="fa-solid fa-trash"></i> -->
+                                            <button type="submit" class="btn btn-alert "><i style="color: red;"
+                                                    class="fa fa-trash"></i></button>
+
+
+                                        </td>
+                                    </tr>
+                                </form>
                                 <%})%>
-                                    <%}%>
+                                    <%} else {%>
+                                        <tr>
+                                            <th colspan="5" style="text-align: center;">Empty</th>
+                                        </tr>
+                                        <%}%>
 
                     </tbody>
+                    <tr>
+                        <td colspan="6" style="text-align: center;border:none;">
+                            <button class=" btn btn-primary  " onclick="dispReg()"><i class="fa  fa-plus "
+                                    style="padding-right: 10px;"></i>Restaurant</button>
+                        </td>
+                    </tr>
                 </table>
             </div>
+            <div class="add-rest ">
+                <h2 class="dash-nav-title " style="padding-top: 0;">
+                    Add Restaurant
+                </h2>
+                <form class="admin-login" action="/rest-reg" method="post" autocomplete="off">
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="restName" class="guest-name" type="text">
+                        <label>Name</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="restNumber" class="guest-pass" type="number">
+                        <label>Number</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="restAddress" class="guest-addr" type="text">
+                        <label>Address</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="restPin" maxlength="6" class="guest-quan" type="number">
+                        <label>Area Pincode</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " required name="restEmail" class="guest-quan" type="email">
+                        <label>Email</label>
+                    </div>
+                    <div class="material-textfield">
+                        <input placeholder=" " class="submit" type="submit" value="Send">
+                    </div>
+                </form>
+            </div>
     </body>
+    <script>
+        const restReg = document.querySelector('.add-rest');
+        dispReg = () => {
+            restReg.classList.toggle("disp-rest")
+        }
+    </script>
 
     </html>

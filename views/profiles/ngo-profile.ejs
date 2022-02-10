@@ -69,7 +69,7 @@
                                                 <input name="id" class="sl-inp" readonly value="<%= rows.order_no%>" />
                                             </th>
                                             <td class="row-data">
-                                                <%= rows.ordered_date%>
+                                                <%= rows.ordered_date.toDateString()%>
                                             </td>
                                             <td class="row-data">
                                                 <%= rows.Name%>
@@ -95,11 +95,9 @@
                                     <%})%>
                                         <%} else {%>
                                             <tr>
-                                                <td>
-                                                    No Orders
-                                                </td>
+                                                <th colspan="4" style="text-align: center;">Empty</th>
                                             </tr>
-                                            <% } %>
+                                            <%}%>
 
                         </tbody>
                     </table>

@@ -101,25 +101,36 @@ module.exports = {
   restLog: (req, res) => {
     const restEmail = req.cookies.restDet.restEmail;
     const restName = req.cookies.restDet.restName;
-    console.log(req.cookies.restDet);
     db.query(
-      "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,'Not Accepted' as ngo  from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid is NULL and  D.Name = ? UNION SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,N.Name from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and  D.Name = ?",
+      "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,'Not Accepted' as ngo  from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid is NULL and  D.Name = ? UNION SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity,O.status,N.Name from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and  D.Name = ? ;",
       [restName, restName],
       (err, rows) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(rows);
-          res.render("lists/rest-log.ejs", {
-            title: "Rest Log",
-            admin_prof: false,
-            rest_prof: true,
-            ngo_prof: false,
-            nav_title: "Log",
-            nav_stat: "rest-log",
-            length: rows.length,
-            rows,
-          });
+          db.query(
+            "select O.order_no,O.ordered_Date,O.status,D.Quantity from orders O ,donors D where O.order_no = D.SEND_ID and D.Name = ? and O.status = ?",
+            [restName, "Waiting for admin"],
+            (err, results) => {
+              if (err) {
+                console.log(err);
+              }
+              console.log(results);
+              var mydate = new Date(rows[0].date);
+              res.render("lists/rest-log.ejs", {
+                title: "Rest Log",
+                admin_prof: false,
+                rest_prof: true,
+                ngo_prof: false,
+                nav_title: "Log",
+                nav_stat: "rest-log",
+                rowsLen: rows.length,
+                resLen: results.length,
+                results,
+                rows,
+              });
+            }
+          );
         }
       }
     );

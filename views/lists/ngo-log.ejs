@@ -24,7 +24,7 @@
                                         <%= rows.Name%>
                                     </td>
                                     <td>
-                                        <%= rows.date%>
+                                        <%= rows.date.toDateString()%>
                                     </td>
                                     <td>
                                         <%= rows.Quantity%>
@@ -33,7 +33,9 @@
                                 </tr>
                                 <%})%>
                                     <%} else {%>
-                                        <p>Empty</p>
+                                        <tr>
+                                            <th colspan="4" style="text-align: center;">Empty</th>
+                                        </tr>
                                         <%}%>
 
                     </tbody>

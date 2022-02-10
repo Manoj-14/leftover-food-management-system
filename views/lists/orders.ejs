@@ -30,7 +30,7 @@
                                             <input name="id" class="sl-inp" readonly value="<%= rows.order_no%>" />
                                         </th>
                                         <td class="row-data">
-                                            <%= rows.Datee%>
+                                            <%= rows.Date.toDateString()%>
                                         </td>
                                         <td class="row-data">
                                             <%= rows.Name%>
@@ -60,11 +60,11 @@
                                     </tr>
                                 </form>
                                 <%})%>
-                                    <%} else { %>
+                                    <%} else {%>
                                         <tr>
-                                            <td> No Orders </td>
+                                            <th colspan="9" style="text-align: center;">No Orders</th>
                                         </tr>
-                                        <% } %>
+                                        <%}%>
 
 
                     </tbody>

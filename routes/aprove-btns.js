@@ -85,11 +85,49 @@ module.exports = {
             (err, rows) => {
               console.log(rows);
               console.log(Sl_no);
-              res.redirect("/orders");
+              db.query(
+                "Insert into log set ?",
+                {
+                  order_no: Sl_no,
+                },
+                (err, rows) => {
+                  res.redirect("/orders");
+                }
+              );
             }
           );
         }
       );
     }
+  },
+  delrest: (req, res) => {
+    rest_email = req.query.restEmail;
+    db.query(
+      "DELETE FROM restaurant where rest_email = ?",
+      [rest_email],
+      (err, rows) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rows);
+          res.redirect("rest-list");
+        }
+      }
+    );
+  },
+  delngo: (req, res) => {
+    rest_email = req.query.restEmail;
+    db.query(
+      "DELETE FROM ngo where ngo_unique_id = ?",
+      [rest_email],
+      (err, rows) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rows);
+          res.redirect("ngo-list");
+        }
+      }
+    );
   },
 };
