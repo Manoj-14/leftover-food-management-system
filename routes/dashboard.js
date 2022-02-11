@@ -188,4 +188,59 @@ module.exports = {
       console.log(err);
     }
   },
+  ngoRegs: (req, res) => {
+    res.render("regs-form/ngo-reg-form.ejs", {
+      title: "Ngo Registration",
+      stsMsg: false,
+    });
+  },
+  restRegs: (req, res) => {
+    res.render("regs-form/ngo-reg-form.ejs", {
+      title: "Ngo Registration",
+      stsMsg: false,
+    });
+  },
+  restProfUp: (req, res) => {
+    console.log(req.body);
+    db.query(
+      "select * from restaurant where rest_email =?",
+      [req.body.restEmail],
+      (err, rows) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rows[0]);
+          console.log(req.body);
+          console.log(req.body.restName === rows[0].rest_name);
+
+          if (
+            req.body.restName.trim() == rows[0].rest_name &&
+            req.body.restNumber.trim() == rows[0].rest_phone &&
+            req.body.restAddress.trim() == rows[0].rest_loc &&
+            req.body.restPin.trim() == rows[0].rest_pin
+          ) {
+            res.redirect("rest-list");
+          } else {
+            db.query(
+              "update restaurant set rest_name=? , rest_phone=?,rest_loc=?,rest_pin=? where rest_email=?",
+              [
+                req.body.restName.trim(),
+                req.body.restNumber.trim(),
+                req.body.restAddress.trim(),
+                req.body.restPin.trim(),
+                req.body.restEmail.trim(),
+              ],
+              (err, results) => {
+                res.redirect("rest-list");
+              }
+            );
+          }
+        }
+      }
+    );
+  },
+  ngoProfUp: (req, res) => {
+    console.log(req.body);
+    res.redirect("ngo-list");
+  },
 };

@@ -115,8 +115,6 @@ module.exports = {
               if (err) {
                 console.log(err);
               }
-              console.log(results);
-              var mydate = new Date(rows[0].date);
               res.render("lists/rest-log.ejs", {
                 title: "Rest Log",
                 admin_prof: false,

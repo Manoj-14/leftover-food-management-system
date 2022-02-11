@@ -32,7 +32,7 @@
                                             <%= rows.rest_pin%>
                                         </td>
                                         <td class="row-data">
-                                            <input name="restEmail" class="sl-inp" value="<%= rows.rest_email%>"
+                                            <input name="restEmail" class="sl-inp" value=" <%= rows.rest_email%> "
                                                 readonly />
 
                                         </td>
@@ -40,7 +40,9 @@
                                             <!-- <i class="fa-solid fa-trash"></i> -->
                                             <button type="submit" class="btn btn-alert "><i style="color: red;"
                                                     class="fa fa-trash"></i></button>
-
+                                            <button type="button" class="btn btn-alert "
+                                                onclick="EdtDet(' <%=rows.rest_name%> ',' <%=rows.rest_email%> ',' <%=rows.rest_phone%> ',' <%=rows.rest_loc%> ',' <%=rows.rest_pin%> '); dispReg('edtDet')"><i
+                                                    style="color: var(--prmy-color);" class="fa fa-edit"></i></button>
 
                                         </td>
                                     </tr>
@@ -55,48 +57,108 @@
                     </tbody>
                     <tr>
                         <td colspan="6" style="text-align: center;border:none;">
-                            <button class=" btn btn-primary  " onclick="dispReg()"><i class="fa  fa-plus "
+                            <button class=" btn btn-primary  " onclick="dispReg('regDet')"><i class="fa  fa-plus "
                                     style="padding-right: 10px;"></i>Restaurant</button>
+
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="add-rest ">
-                <h2 class="dash-nav-title " style="padding-top: 0;">
-                    Add Restaurant
-                </h2>
-                <form class="admin-login" action="/rest-reg" method="post" autocomplete="off">
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="restName" class="guest-name" type="text">
-                        <label>Name</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="restNumber" class="guest-pass" type="number">
-                        <label>Number</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="restAddress" class="guest-addr" type="text">
-                        <label>Address</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="restPin" maxlength="6" class="guest-quan" type="number">
-                        <label>Area Pincode</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="restEmail" class="guest-quan" type="email">
-                        <label>Email</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " class="submit" type="submit" value="Send">
-                    </div>
-                </form>
-            </div>
+            <section class="reg-class" id="regDet">
+                <div class="add-rest ">
+                    <h2 class="dash-nav-title " style="padding-top: 0;">
+                        Add Restaurant
+                    </h2>
+                    <form class="admin-login" action="/rest-reg" method="post" autocomplete="off">
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restName" class="guest-name" type="text">
+                            <label>Name</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restNumber" class="guest-pass" type="number">
+                            <label>Number</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restAddress" class="guest-addr" type="text">
+                            <label>Address</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restPin" maxlength="6" class="guest-quan"
+                                type="number">
+                            <label>Area Pincode</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restEmail" class="guest-quan" type="email">
+                            <label>Email</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " class="submit" type="submit" value="Send">
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('regDet')"
+                                value="Close">
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="reg-class" id="edtDet">
+                <div class="add-rest ">
+                    <h2 class="dash-nav-title " style="padding-top: 0;">
+                        Add Restaurant
+                    </h2>
+                    <form class="admin-login" action="/rest-upt" method="post" autocomplete="off">
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restName" class="rest-name" type="text">
+                            <label>Name</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restNumber" class="rest-num" type="number">
+                            <label>Number</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " readonly required name="restEmail" class="rest-mail" type="email">
+                            <label>Email</label>
+                            <p style="font-size: 10px; text-align: left;" class="danger">you can't edit email</p>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restAddress" class="rest-addr" type="text">
+                            <label>Address</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="restPin" class="rest-pin" type="number">
+                            <label>Area Pincode</label>
+                        </div>
+
+                        <div class="material-textfield">
+                            <input placeholder=" " class="submit" type="submit" value="Update">
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('edtDet')"
+                                value="Close">
+                        </div>
+                    </form>
+                </div>
+            </section>
     </body>
     <script>
-        const restReg = document.querySelector('.add-rest');
-        dispReg = () => {
-            restReg.classList.toggle("disp-rest")
+
+        dispReg = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(1)";
         }
+        dispCls = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(0)";
+        }
+        EdtDet = (name, email, num, loc, pin) => {
+            console.log(name, email, num, loc, pin);
+            document.querySelector(".rest-name").value = name;
+            document.querySelector(".rest-num").value = parseInt(num);
+            document.querySelector(".rest-addr").value = loc;
+            document.querySelector(".rest-pin").value = parseInt(pin);
+            document.querySelector(".rest-mail").value = email;
+        }
+
     </script>
 
     </html>

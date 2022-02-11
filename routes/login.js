@@ -252,4 +252,10 @@ module.exports = {
       }
     );
   },
+  ngoRegs: (req, res) => {
+    res.render("login/guest-don.ejs", {
+      title: "Guest Donor",
+      stsMsg: false,
+    });
+  },
 };

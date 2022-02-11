@@ -16,6 +16,7 @@
                             <th scope="col">Remove</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <%if(length> 0) { %>
                             <% rows.forEach((rows, index)=> { %>
@@ -48,6 +49,9 @@
                                         <td>
                                             <button type="submit" class="btn btn-alert "><i style="color: red;"
                                                     class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-alert "
+                                                onclick="EdtDet('<%= rows.ngo_unique_id%>',' <%=rows.Name%> ',' <%=rows.ngo_address%> ',' <%= rows.ngo_pincode%> ',' <%= rows.ngo_email%>',' <%= rows.ngo_phone%> '); dispReg('edtDet')"><i
+                                                    style="color: var(--prmy-color);" class="fa fa-edit"></i></button>
                                         </td>
                                     </tr>
                                 </form>
@@ -60,51 +64,114 @@
                     </tbody>
                     <tr>
                         <td colspan="8" style="text-align: center;border:none;">
-                            <button class=" btn btn-primary  " onclick="dispReg()"><i class="fa  fa-plus "
+                            <button class=" btn btn-primary  " onclick="dispReg('regDet')"><i class="fa  fa-plus "
                                     style="padding-right: 10px;"></i>NGO</button>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="add-rest ">
-                <h2 class="dash-nav-title " style="padding-top: 0;">
-                    Add Restaurant
-                </h2>
-                <form class="admin-login" action="/ngo-reg" method="post" autocomplete="off">
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoName" class="guest-name" type="text">
-                        <label>NGO Name</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoUid" class="guest-name" type="text">
-                        <label>NGO UID</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoNumber" class="guest-pass" type="number">
-                        <label>Number</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoAddress" class="guest-addr" type="text">
-                        <label>Address</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoPin" maxlength="6" class="guest-quan" type="number">
-                        <label>Area Pincode</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " required name="ngoEmail" class="guest-quan" type="email">
-                        <label>Email</label>
-                    </div>
-                    <div class="material-textfield">
-                        <input placeholder=" " class="submit" type="submit" value="Add">
-                    </div>
-                </form>
-            </div>
+            <section class="reg-class" id="regDet">
+                <div class="add-rest ">
+                    <h2 class="dash-nav-title " style="padding-top: 0;">
+                        Add NGO
+                    </h2>
+                    <form class="admin-login" action="/ngo-reg" method="post" autocomplete="off">
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoName" class="guest-name" type="text">
+                            <label>NGO Name</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoUid" class="guest-name" type="text">
+                            <label>NGO UID</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoNumber" class="guest-pass" type="number">
+                            <label>Number</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoAddress" class="guest-addr" type="text">
+                            <label>Address</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoPin" maxlength="6" class="guest-quan"
+                                type="number">
+                            <label>Area Pincode</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoEmail" class="guest-quan" type="email">
+                            <label>Email</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " class="submit" type="submit" value="Add">
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('regDet')"
+                                value="Close">
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="reg-class" id="edtDet">
+                <div class="add-rest ">
+                    <h2 class="dash-nav-title " style="padding-top: 0;">
+                        Add NGO
+                    </h2>
+                    <form class="admin-login" action="/ngo-upt" method="post" autocomplete="off">
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoName" class="ngo-name" type="text">
+                            <label>NGO Name</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " readonly required name="ngoUid" class="ngo-uid" type="text">
+                            <label>NGO UID</label>
+                            <p style="font-size: 10px; text-align: left;" class="danger">you can't edit UID</p>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoNumber" class="ngo-num" type="number">
+                            <label>Number</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoAddress" class="ngo-loc" type="text">
+                            <label>Address</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " required name="ngoPin" maxlength="6" class="ngo-pin" type="number">
+                            <label>Area Pincode</label>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " readonly required name="ngoEmail" class="ngo-mail" type="email">
+                            <label>Email</label>
+                            <p style="font-size: 10px; text-align: left;" class="danger">you can't edit email</p>
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " class="submit" type="submit" value="Add">
+                        </div>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('edtDet')"
+                                value="Close">
+                        </div>
+                    </form>
+                </div>
+            </section>
+
     </body>
     <script>
-        const restReg = document.querySelector('.add-rest');
-        dispReg = () => {
-            restReg.classList.toggle("disp-rest")
+        dispReg = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(1)";
+        }
+        dispCls = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(0)";
+        }
+        EdtDet = (uid, name, loc, pin, email, num,) => {
+            console.log(name, email, num, loc, pin);
+            document.querySelector(".ngo-name").value = name;
+            document.querySelector(".ngo-num").value = parseInt(num);
+            document.querySelector(".ngo-loc").value = loc;
+            document.querySelector(".ngo-pin").value = parseInt(pin);
+            document.querySelector(".ngo-mail").value = email;
+            document.querySelector(".ngo-uid").value = uid;
         }
     </script>
 

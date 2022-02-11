@@ -71,6 +71,10 @@ const {
   getRestDash,
   getNgoDash,
   adminProfUp,
+  ngoRegs,
+  restRegs,
+  restProfUp,
+  ngoProfUp,
 } = require("./routes/dashboard");
 const {
   restList,
@@ -118,6 +122,8 @@ app.all("/ngo-profile", getNgoDash);
 app.all("/rest-log", restLog);
 app.all("/rest-orders", restOrd);
 app.all("/ngo-log", ngoLog);
+app.all("/ngo-regs", ngoRegs);
+app.all("/rest-regs", restRegs);
 
 // aproval
 // app.get("/accept", ngoAprove);
@@ -126,6 +132,8 @@ app.all("/accept", ngoAprove);
 app.all("/acceptOrd", adminAprove);
 app.all("/rejectOrd", adminReject);
 app.all("/admin-update", adminProfUp);
+app.all("/rest-upt", restProfUp);
+app.all("/ngo-upt", ngoProfUp);
 
 app.all("/delete-rest", delrest);
 app.all("/delete-ngo", delngo);

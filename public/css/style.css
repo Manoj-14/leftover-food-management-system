@@ -58,7 +58,7 @@ body .wrapper nav ul li {
   padding: 15px;
   right: 16rem;
   top: 2.2rem;
-  background-color: rgba(255, 255, 255, 0.637);
+  /* background-color: rgba(255, 255, 255, 0.637); */
   border-radius: 15px;
   font-size: 1rem !important;
 }
@@ -269,13 +269,24 @@ footer {
   background-color: transparent;
   color: inherit;
 }
-.add-rest {
-  display: none;
+.reg-class {
+  /* display: none; */
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 2rem;
+  transition: transform 300ms ease-in-out;
+  z-index: var(--pop-index);
+  background-color: rgba(0, 0, 0, 0.349);
 }
-.disp-rest {
-  display: flex !important;
+.reg-class .add-rest {
+  background-color: white;
+  padding: 2rem;
+  /* border: 1px solid var(--prmy-color); */
+  border-radius: 10px;
 }
