@@ -65,6 +65,8 @@ const {
   adminlogOut,
   addReg,
   addNgo,
+  restRegAuth,
+  ngoRegAuth,
 } = require("./routes/login");
 const {
   getAdmindash,
@@ -110,6 +112,8 @@ app.all("/ngoAuth", getNgoAuth);
 app.all("/logOut", adminlogOut);
 app.all("/rest-reg", addReg);
 app.all("/ngo-reg", addNgo);
+app.all("/rest-reg-auth", restRegAuth);
+app.all("/ngo-reg-auth", ngoRegAuth);
 
 //dashboard
 app.all("/Admin-profile", getAdmindash);

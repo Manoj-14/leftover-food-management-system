@@ -195,7 +195,7 @@ module.exports = {
     });
   },
   restRegs: (req, res) => {
-    res.render("regs-form/ngo-reg-form.ejs", {
+    res.render("regs-form/rest-reg-form.ejs", {
       title: "Ngo Registration",
       stsMsg: false,
     });
@@ -240,7 +240,46 @@ module.exports = {
     );
   },
   ngoProfUp: (req, res) => {
-    console.log(req.body);
-    res.redirect("ngo-list");
+    db.query(
+      "select Name,ngo_unique_id,ngo_address,ngo_pincode,ngo_email,ngo_phone from ngo where ngo_unique_id =?",
+      [req.body.ngoUid],
+      (err, rows) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const { ngoName, ngoUid, ngoNumber, ngoAddress, ngoPin } = req.body;
+          const {
+            Name,
+            ngo_unique_id,
+            ngo_address,
+            ngo_pincode,
+            ngo_email,
+            ngo_phone,
+          } = rows[0];
+          if (
+            (Name == ngoName.trim(),
+            ngo_address == ngoAddress.trim() &&
+              ngo_pincode == ngoPin.trim() &&
+              ngo_phone == ngoNumber.trim())
+          ) {
+            res.redirect("ngo-list");
+          } else {
+            db.query(
+              "update ngo set  Name=? ,ngo_address=?,ngo_pincode=?,ngo_phone=? where ngo_unique_id=?",
+              [
+                ngoName.trim(),
+                ngoAddress.trim(),
+                ngoPin.trim(),
+                ngoNumber.trim(),
+                ngo_unique_id,
+              ],
+              (err, results) => {
+                res.redirect("ngo-list");
+              }
+            );
+          }
+        }
+      }
+    );
   },
 };

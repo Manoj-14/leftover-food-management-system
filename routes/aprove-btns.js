@@ -101,7 +101,7 @@ module.exports = {
     }
   },
   delrest: (req, res) => {
-    rest_email = req.query.restEmail;
+    rest_email = req.query.restEmail.trim();
     db.query(
       "DELETE FROM restaurant where rest_email = ?",
       [rest_email],
@@ -109,7 +109,6 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
-          console.log(rows);
           res.redirect("rest-list");
         }
       }

@@ -1,6 +1,7 @@
 <%- include('./partials/header.ejs'); %>
 
     <body>
+        <div id="preloader"></div>
         <div class="wrapper" id="home">
             <nav class="nav-bar">
                 <ul>
@@ -115,5 +116,11 @@
         </div>
         <script src="index.js"></script>
     </body>
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            loader.style.display = "none";
+        })
+    </script>
 
     </html>

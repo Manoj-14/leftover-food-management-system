@@ -225,7 +225,13 @@ module.exports = {
       },
       (err, results) => {
         if (err) {
-          console.log(err);
+          if (err.code == "ER_DUP_ENTRY") {
+            res.send(
+              "<script>alert('Email already exist');window.location.href = '/rest-list';</script>"
+            );
+          } else {
+            throw err;
+          }
         } else {
           res.redirect("rest-list");
         }
@@ -245,7 +251,13 @@ module.exports = {
       },
       (err, results) => {
         if (err) {
-          console.log(err);
+          if (err.code == "ER_DUP_ENTRY") {
+            res.send(
+              "<script>alert('UID already exist');window.location.href = '/ngo-list';</script>"
+            );
+          } else {
+            throw err;
+          }
         } else {
           res.redirect("ngo-list");
         }
@@ -257,5 +269,92 @@ module.exports = {
       title: "Guest Donor",
       stsMsg: false,
     });
+  },
+  restRegAuth: (req, res) => {
+    console.log(req.body);
+    const {
+      restName,
+      restNumber,
+      restAddress,
+      restPin,
+      restEmail,
+      restPass,
+      restCnf,
+    } = req.body;
+    if (restPass == restCnf) {
+      // res.json({ sent: req.body });
+      db.query(
+        "insert into restaurant set ?",
+        {
+          rest_name: restName,
+          rest_email: restEmail,
+          rest_phone: restNumber,
+          rest_loc: restAddress,
+          rest_pin: restPin,
+          rest_password: restCnf,
+        },
+        (err, results) => {
+          if (err) {
+            if (err.code == "ER_DUP_ENTRY") {
+              res.render("regs-form/rest-reg-form.ejs", {
+                title: "Restaurent Registration",
+                stsMsg: "Password Not Matched",
+              });
+            } else {
+              throw err;
+            }
+          } else {
+            res.render("regs-form/rest-reg-form.ejs", {
+              title: "Restaurent Registration",
+              stsMsg: "Regestration Successfull",
+            });
+          }
+        }
+      );
+    }
+  },
+  ngoRegAuth: (req, res) => {
+    const {
+      restName,
+      uid,
+      restNumber,
+      restAddress,
+      restPin,
+      restEmail,
+      restPass,
+      restCnf,
+    } = req.body;
+    if (restPass == restCnf) {
+      // res.json({ sent: req.body });
+      db.query(
+        "insert into ngo set ?",
+        {
+          Name: restName,
+          ngo_unique_id: uid,
+          ngo_email: restEmail,
+          ngo_phone: restNumber,
+          ngo_address: restAddress,
+          ngo_pincode: restPin,
+          ngo_password: restCnf,
+        },
+        (err, results) => {
+          if (err) {
+            if (err.code == "ER_DUP_ENTRY") {
+              res.render("regs-form/ngo-reg-form.ejs", {
+                title: "NGO Registration",
+                stsMsg: "Password Not Matched",
+              });
+            } else {
+              throw err;
+            }
+          } else {
+            res.render("regs-form/ngo-reg-form.ejs", {
+              title: "NGO Registration",
+              stsMsg: "Regestration Successfull",
+            });
+          }
+        }
+      );
+    }
   },
 };

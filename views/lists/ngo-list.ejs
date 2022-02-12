@@ -139,12 +139,7 @@
                             <label>Area Pincode</label>
                         </div>
                         <div class="material-textfield">
-                            <input placeholder=" " readonly required name="ngoEmail" class="ngo-mail" type="email">
-                            <label>Email</label>
-                            <p style="font-size: 10px; text-align: left;" class="danger">you can't edit email</p>
-                        </div>
-                        <div class="material-textfield">
-                            <input placeholder=" " class="submit" type="submit" value="Add">
+                            <input placeholder=" " class="submit" type="submit" value="Update">
                         </div>
                         <div class="material-textfield">
                             <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('edtDet')"
@@ -170,7 +165,7 @@
             document.querySelector(".ngo-num").value = parseInt(num);
             document.querySelector(".ngo-loc").value = loc;
             document.querySelector(".ngo-pin").value = parseInt(pin);
-            document.querySelector(".ngo-mail").value = email;
+            // document.querySelector(".ngo-mail").value = email;
             document.querySelector(".ngo-uid").value = uid;
         }
     </script>

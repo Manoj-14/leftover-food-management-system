@@ -290,3 +290,14 @@ footer {
   /* border: 1px solid var(--prmy-color); */
   border-radius: 10px;
 }
+#guest-reg {
+  padding: 3rem 0;
+}
+#preloader {
+  background: var(--sec-color2) url("/loader/loader.gif") no-repeat center;
+  background-size: 10%;
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+}
