@@ -44,6 +44,50 @@
                             <%= ngoPin%>
                         </spam>
                     </div>
+                    <button class=" btn btn-primary  " onclick="dispReg('regDet')">Change Password</button>
+                </section>
+                <section class="reg-class" id="passnotmatch">
+                    <div class="add-rest ">
+                        <h2 class="dash-nav-title " style="padding-top: 0;">
+                            Password Not Matched
+                        </h2>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger"
+                                onclick="dispCls('passnotmatch')" value="Close">
+                        </div>
+                    </div>
+                </section>
+                <section class="reg-class" id="regDet">
+                    <div class="add-rest ">
+                        <h2 class="dash-nav-title " style="padding-top: 0;">
+                            Change Password
+                        </h2>
+                        <form class="admin-login" id="change_pass" action="/ngo-change-pass" method="post"
+                            autocomplete="off">
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="cur_pass" id="pass_cur" class="guest-name"
+                                    type="text">
+                                <label>Current Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="new_pass" id="pass_new" class="guest-name"
+                                    type="text">
+                                <label>New Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="con_pass" id="pass_con" class="guest-name"
+                                    type="text">
+                                <label>Confirm new Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " class="submit" type="submit" id="check_pass_btn" value="Change">
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('regDet')"
+                                    value="Close">
+                            </div>
+                        </form>
+                    </div>
                 </section>
                 <h3>Foods</h3>
                 <div id="rest-list" class="rest-list">
@@ -103,7 +147,16 @@
                     </table>
                 </div>
             </section>
-            <script src="js/index.js"></script>
+            <script>
+                dispReg = (idName) => {
+                    const restReg = document.getElementById(idName);
+                    restReg.style.transform = "scale(1)";
+                }
+                dispCls = (idName) => {
+                    const restReg = document.getElementById(idName);
+                    restReg.style.transform = "scale(0)";
+                }
+            </script>
     </body>
 
 

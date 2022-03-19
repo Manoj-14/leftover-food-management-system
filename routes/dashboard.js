@@ -38,66 +38,81 @@ module.exports = {
     }
   },
   getRestDash: (req, res) => {
-    restName = req.cookies.restDet.restName;
-    restEmail = req.cookies.restDet.restEmail;
-    db.query(
-      "Select * from restaurant where rest_email = ? and rest_name = ?",
-      [restEmail, restName],
-      (err, rows) => {
-        if (err) {
-          console.log(err);
+    if (req.cookies.restDet == undefined) {
+      res.render("login/restaurant-login.ejs", {
+        title: "Res Login",
+        status: "Please login again",
+      });
+    } else {
+      restName = req.cookies.restDet.restName;
+      restEmail = req.cookies.restDet.restEmail;
+      db.query(
+        "Select * from restaurant where rest_email = ? and rest_name = ?",
+        [restEmail, restName],
+        (err, rows) => {
+          if (err) {
+            console.log(err);
+          }
+          res.render("profiles/rest-profile.ejs", {
+            title: "Rest Profile || Dashboard",
+            admin_prof: false,
+            rest_prof: true,
+            ngo_prof: false,
+            status: false,
+            nav_title: "Restaurent dashboard",
+            restName: rows[0].rest_name,
+            restEmail: rows[0].rest_email,
+            restPhone: rows[0].rest_phone,
+            restLoc: rows[0].rest_loc,
+            restPin: rows[0].rest_pin,
+            nav_stat: "rest-prof",
+          });
         }
-        res.render("profiles/rest-profile.ejs", {
-          title: "Rest Profile || Dashboard",
-          admin_prof: false,
-          rest_prof: true,
-          ngo_prof: false,
-          nav_title: "Restaurent dashboard",
-          restName: rows[0].rest_name,
-          restEmail: rows[0].rest_email,
-          restPhone: rows[0].rest_phone,
-          restLoc: rows[0].rest_loc,
-          restPin: rows[0].rest_pin,
-          nav_stat: "rest-prof",
-        });
-      }
-    );
+      );
+    }
   },
   getNgoDash: (req, res) => {
-    ngoUid = req.cookies.ngoDet.ngo_uid;
-    ngoEmail = req.cookies.ngoDet.ngo_email;
-    db.query(
-      "select * from ngo where ngo_unique_id = ?",
-      [ngoUid],
-      (err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        db.query(
-          "select O.ordered_date,O.order_no,D.desc ,O.status ,D.Name ,D.Phone , D.Pincode,D.Quantity from donors D,orders O WHERE D.SEND_ID = O.order_no and O.status = ?",
-          ["waiting for NGO"],
-          (err, rows) => {
-            console.log(rows);
-            res.render("profiles/ngo-profile.ejs", {
-              title: "NGO Dashboard",
-              ngoUid: results[0].ngo_unique_id,
-              ngoName: results[0].Name,
-              ngoEmail: results[0].ngo_email,
-              ngoPhone: results[0].ngo_phone,
-              ngoLoc: results[0].ngo_address,
-              ngoPin: results[0].ngo_pincode,
-              length: rows.length,
-              nav_stat: "ngo-prof",
-              nav_title: "NGO Dashboard",
-              admin_prof: false,
-              rest_prof: false,
-              ngo_prof: true,
-              rows,
-            });
+    if (req.cookies.ngoDet == undefined) {
+      res.render("login/ngo-login.ejs", {
+        title: "Ngo Login",
+        status: "Please login again",
+      });
+    } else {
+      ngoUid = req.cookies.ngoDet.ngo_uid;
+      ngoEmail = req.cookies.ngoDet.ngo_email;
+      db.query(
+        "select * from ngo where ngo_unique_id = ?",
+        [ngoUid],
+        (err, results) => {
+          if (err) {
+            console.log(err);
           }
-        );
-      }
-    );
+          db.query(
+            "select O.ordered_date,O.order_no,D.desc ,O.status ,D.Name ,D.Phone , D.Pincode,D.Quantity from donors D,orders O WHERE D.SEND_ID = O.order_no and O.status = ?",
+            ["waiting for NGO"],
+            (err, rows) => {
+              console.log(rows);
+              res.render("profiles/ngo-profile.ejs", {
+                title: "NGO Dashboard",
+                ngoUid: results[0].ngo_unique_id,
+                ngoName: results[0].Name,
+                ngoEmail: results[0].ngo_email,
+                ngoPhone: results[0].ngo_phone,
+                ngoLoc: results[0].ngo_address,
+                ngoPin: results[0].ngo_pincode,
+                length: rows.length,
+                nav_stat: "ngo-prof",
+                nav_title: "NGO Dashboard",
+                admin_prof: false,
+                rest_prof: false,
+                ngo_prof: true,
+                rows,
+              });
+            }
+          );
+        }
+      );
+    }
   },
   adminProfUp: (req, res) => {
     const adminUsername = req.body.adminUsername;
@@ -231,7 +246,10 @@ module.exports = {
                 req.body.restEmail.trim(),
               ],
               (err, results) => {
-                res.redirect("rest-list");
+                // res.redirect("rest-list");
+                res.render("profiles\rest-profile.ejs", {
+                  status: "Thank you for food",
+                });
               }
             );
           }

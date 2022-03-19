@@ -38,24 +38,135 @@
                             <%= restPin%>
                         </spam>
                     </div>
+                    <!-- <form> -->
+                    <button class=" btn btn-primary  " onclick="dispReg('regDet')">Change Password</button>
+                    <!-- </form> -->
+                </section>
+                <section class="reg-class" id="passnotmatch">
+                    <div class="add-rest ">
+                        <h2 class="dash-nav-title " style="padding-top: 0;">
+                            Password Not Matched
+                        </h2>
+                        <div class="material-textfield">
+                            <input placeholder=" " type="button" class=" btn btn-danger"
+                                onclick="dispCls('passnotmatch')" value="Close">
+                        </div>
+                    </div>
+                </section>
+                <section class="reg-class" id="regDet">
+                    <div class="add-rest ">
+                        <h2 class="dash-nav-title " style="padding-top: 0;">
+                            Change Password
+                        </h2>
+                        <form class="admin-login" id="change_pass" action="/rest-change-pass" method="post"
+                            autocomplete="off">
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="cur_pass" id="pass_cur" class="guest-name"
+                                    type="text">
+                                <label>Current Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="new_pass" id="pass_new" class="guest-name"
+                                    type="text">
+                                <label>New Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " required name="con_pass" id="pass_con" class="guest-name"
+                                    type="text">
+                                <label>Confirm new Password</label>
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " class="submit" type="submit" id="check_pass_btn" value="Change">
+                            </div>
+                            <div class="material-textfield">
+                                <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('regDet')"
+                                    value="Close">
+                            </div>
+                        </form>
+                    </div>
                 </section>
                 <div class="add-don">
                     <h3>Send Food</h3>
-                    <form class="admin-login" action="/rest-orders" method="post" autocomplete="off">
-                        <div class="material-textfield">
-                            <input placeholder=" " required name="foodQuantity" class="guest-quan" type="number">
-                            <label>Quantity Of Food</label>
-                        </div>
-                        <div class="material-textfield">
-                            <textarea placeholder=" " name="discription" class="guest-desc" type="text"></textarea>
-                            <label>Discription</label>
-                        </div>
-                        <div class="material-textfield">
-                            <input placeholder=" " class="submit" type="submit" value="Send">
-                        </div>
-                    </form>
+                    <% if (status) { %>
+                        <p class="success setTimer">
+                            <%= status %>
+                        </p>
+                        <% } %>
+                            <form class="admin-login" action="/rest-orders" method="post" autocomplete="off">
+                                <div class="material-textfield">
+                                    <input placeholder=" " required name="foodQuantity" class="guest-quan"
+                                        type="number">
+                                    <label>Quantity Of Food</label>
+                                </div>
+                                <div class="material-textfield">
+                                    <textarea placeholder=" " name="discription" class="guest-desc"
+                                        type="text"></textarea>
+                                    <label>Description</label>
+                                </div>
+                                <div class="material-textfield">
+                                    <input placeholder=" " class="submit" type="submit" value="Send">
+                                </div>
+
+                            </form>
                 </div>
             </section>
     </body>
+    <script>
+        const setTimer = document.querySelector(".setTimer");
+        // const cur_pass = document.getElementById("pass_cur");
+        const new_pass = document.getElementById("pass_new");
+        const con_pass = document.getElementById("pass_con");
+        const pass_sub = document.getElementById("change_pass");
+        const pass_btn = document.getElementById("check_pass_btn");
+
+        // console.log(pass_sub.action);
+        // if (new_pass != con_pass) {
+        //     console.log("Hiii");
+        // }
+        // else {
+        //     dispReg("")
+        // }
+        // console.log(setTimer)
+        const myTimeout = setTimeout(rmDisp, 5000);
+
+        function rmDisp() {
+            setTimer.style.display = "none";
+        }
+        dispReg = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(1)";
+        }
+        dispCls = (idName) => {
+            const restReg = document.getElementById(idName);
+            restReg.style.transform = "scale(0)";
+        }
+        // check_pass = (e) => {
+        //     const new_pass = document.getElementById("pass_new");
+        //     const con_pass = document.getElementById("pass_con");
+        //     if (new_pass != con_pass) {
+        //         dispReg("passnotmatch")
+        //     }
+        //     else {
+        //         pass_sub.action = "/rest-change-pass"
+        //     }
+
+        // }
+        // pass_btn.addEventListener("click", function (e) {
+        //     e.preventDefault;
+        //     const new_pass = document.getElementById("pass_new");
+        //     const con_pass = document.getElementById("pass_con");
+        //     if (new_pass != con_pass) {
+        //         dispReg("passnotmatch")
+        //     }
+        //     else {
+        //         pass_sub.action = "/rest-change-pass";
+        //     }
+        // })
+        function incr() {
+            dispReg('regDet');
+        }
+        // incr()
+
+    </script>
 
     </html>
