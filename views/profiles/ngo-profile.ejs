@@ -5,6 +5,7 @@
     </head>
 
     <body>
+        <!-- <div id="preloader"></div> -->
         <%- include('../partials/dashboard-nav.ejs'); %>
             <section class="rest-dashboard">
                 <section class="prof-det">
@@ -148,6 +149,10 @@
                 </div>
             </section>
             <script>
+                var loader = document.getElementById("preloader");
+                window.addEventListener("load", () => {
+                    loader.style.display = "none";
+                })
                 dispReg = (idName) => {
                     const restReg = document.getElementById(idName);
                     restReg.style.transform = "scale(1)";

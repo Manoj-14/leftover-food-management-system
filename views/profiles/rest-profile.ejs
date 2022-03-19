@@ -5,6 +5,7 @@
     </head>
 
     <body>
+        <!-- <div id="preloader"></div> -->
         <%- include('../partials/dashboard-nav.ejs'); %>
             <section class="rest-dashboard">
                 <section class="prof-det">
@@ -112,6 +113,10 @@
             </section>
     </body>
     <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            loader.style.display = "none";
+        })
         const setTimer = document.querySelector(".setTimer");
         // const cur_pass = document.getElementById("pass_cur");
         const new_pass = document.getElementById("pass_new");

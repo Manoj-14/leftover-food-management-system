@@ -29,3 +29,13 @@
             <%= title %>
         </title>
     </head>
+
+    <body>
+        <div id="preloader"></div>
+    </body>
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            loader.style.display = "none";
+        })
+    </script>

@@ -1,6 +1,7 @@
 <%- include('../partials/header.ejs'); %>
 
     <body>
+        <!-- <div id="preloader"></div> -->
         <%- include('../partials/dashboard-nav.ejs'); %>
 
             <section class="disp-prof">
@@ -61,6 +62,10 @@
             </section>
     </body>
     <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            loader.style.display = "none";
+        })
         const setTimer = document.querySelector(".uptMsg");
         console.log(setTimer)
         const myTimeout = setTimeout(rmDisp, 5000);
