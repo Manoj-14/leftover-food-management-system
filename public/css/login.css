@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-around;
   height: 100vh;
-  background-image: url("/quotebg.svg");
+  /* background-image: url("/quotebg.svg"); */
   background-repeat: no-repeat;
   background-size: 50rem;
   background-position: -5rem -6rem;
@@ -34,7 +34,7 @@
 }
 .quotes {
   color: var(--sec-color3);
-
+  background-color: var(--prmy-color) !important;
   font-size: 1.5rem;
   /* text-align: center; */
 }
@@ -61,7 +61,7 @@ cite {
   /* border: 3px solid var(--ter-color2); */
   background-color: var(--sec-color2);
   border: none;
-  border: 3px solid var(--ter-color2);
+  /* border: 3px solid var(--ter-color2); */
   transition: border 500ms linear;
   border-radius: 20px;
 }
@@ -92,7 +92,7 @@ cite {
 .hvr-shutter-out-horizontal:focus,
 .hvr-shutter-out-horizontal:active {
   color: white;
-  border: 3px solid transparent;
+  /* border: 3px solid transparent; */
 }
 .hvr-shutter-out-horizontal:hover:before,
 .hvr-shutter-out-horizontal:focus:before,

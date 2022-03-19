@@ -129,4 +129,78 @@ module.exports = {
       }
     );
   },
+  restpass: (req, res) => {
+    const rest_email = req.cookies.restDet.restEmail;
+    const { cur_pass, new_pass, con_pass } = req.body;
+    db.query(
+      "select * from restaurant where rest_email=? and rest_password=?",
+      [rest_email, cur_pass],
+      (err, rows) => {
+        if (rows != undefined) {
+          if (rows.length > 0) {
+            if (new_pass == con_pass) {
+              db.query(
+                "update restaurant set rest_password=? where rest_email=?",
+                [new_pass, rest_email],
+                (err, rows) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.log(rows);
+                    res.redirect("/rest-profile");
+                  }
+                }
+              );
+            } else {
+              res.send(
+                "<script>alert('Password not Matched');window.location.href = '/rest-profile';</script>"
+              );
+            }
+          } else {
+            res.send(
+              "<script>alert('incorrect Password');window.location.href = '/rest-profile';</script>"
+            );
+          }
+        }
+      }
+    );
+  },
+  ngopass: (req, res) => {
+    const ngo_uid = req.cookies.ngoDet.ngo_uid;
+    console.log(ngo_uid);
+    const { cur_pass, new_pass, con_pass } = req.body;
+    db.query(
+      "select * from ngo where ngo_unique_id=? and ngo_password=?",
+      [ngo_uid, cur_pass],
+      (err, rows) => {
+        // console.log(rows);
+        if (rows != undefined) {
+          if (rows.length > 0) {
+            if (new_pass == con_pass) {
+              db.query(
+                "update ngo set ngo_password=? where ngo_unique_id=?",
+                [new_pass, ngo_uid],
+                (err, rows) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    // console.log(rows);
+                    res.redirect("/ngo-profile");
+                  }
+                }
+              );
+            } else {
+              res.send(
+                "<script>alert('Password not Matched');window.location.href = '/ngo-profile';</script>"
+              );
+            }
+          } else {
+            res.send(
+              "<script>alert('incorrect Password');window.location.href = '/ngo-profile';</script>"
+            );
+          }
+        }
+      }
+    );
+  },
 };

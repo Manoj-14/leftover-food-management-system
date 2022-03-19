@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const path = require("path");
 var cookieParser = require("cookie-parser");
-const show = require("./public/js/index");
+// const show = require("./public/js/index");
 const fetch = require("node-fetch");
 const session = require("express-session");
 const bcrypt = require("bcrypt-nodejs");
@@ -35,8 +35,9 @@ app.use(cookieParser());
 db.connect((err) => {
   if (err) {
     console.log("Can't connect to DataBase");
+  } else {
+    console.log(`Connected to *${databaseSet}* Database`);
   }
-  console.log(`Connected to *${databaseSet}* Database`);
 });
 global.db = db;
 //global.ses = session();
@@ -62,11 +63,13 @@ const {
   getRestAuth,
   restOrd,
   getNgoAuth,
-  adminlogOut,
   addReg,
   addNgo,
   restRegAuth,
   ngoRegAuth,
+  adminlogOut,
+  restlogOut,
+  ngologOut,
 } = require("./routes/login");
 const {
   getAdmindash,
@@ -92,6 +95,8 @@ const {
   adminReject,
   delrest,
   delngo,
+  restpass,
+  ngopass,
 } = require("./routes/aprove-btns");
 // index page
 app.all("/", (req, res) => {
@@ -109,7 +114,9 @@ app.all("/guest-reg", guestReg);
 app.all("/AdminAuth", getAdminAuth);
 app.all("/restAuth", getRestAuth);
 app.all("/ngoAuth", getNgoAuth);
-app.all("/logOut", adminlogOut);
+app.all("/adminlogOut", adminlogOut);
+app.all("/ngologOut", ngologOut);
+app.all("/restlogOut", restlogOut);
 app.all("/rest-reg", addReg);
 app.all("/ngo-reg", addNgo);
 app.all("/rest-reg-auth", restRegAuth);
@@ -131,7 +138,8 @@ app.all("/rest-regs", restRegs);
 
 // aproval
 // app.get("/accept", ngoAprove);
-
+app.all("/rest-change-pass", restpass);
+app.all("/ngo-change-pass", ngopass);
 app.all("/accept", ngoAprove);
 app.all("/acceptOrd", adminAprove);
 app.all("/rejectOrd", adminReject);

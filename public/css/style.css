@@ -223,13 +223,34 @@ main {
 }
 /* footer */
 footer {
-  background-color: var(--sec-color3);
+  background-color: var(--prmy-color);
   color: var(--sec-color2);
   position: relative;
   top: 20px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 0 0 0;
 }
+footer spam {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+footer div:first-child a {
+  color: var(--sec-color3);
+  padding: 2px !important;
+  margin: 2px 0;
+}
+footer div:first-child a:hover {
+  color: var(--sec-color3) !important;
+  background-color: var(--sec-color2) !important;
+}
+#ver-divider {
+  width: 2px;
+  height: 130px;
+  background-color: white;
+}
+
 /*  */
 .success {
   color: rgb(9, 231, 102);
@@ -283,6 +304,7 @@ footer {
   transition: transform 300ms ease-in-out;
   z-index: var(--pop-index);
   background-color: rgba(0, 0, 0, 0.349);
+  position: fixed;
 }
 .reg-class .add-rest {
   background-color: white;

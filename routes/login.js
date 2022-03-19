@@ -10,6 +10,7 @@ module.exports = {
   getAdminAuth: (req, res) => {
     var adminUsername = req.body.adminusername;
     var adminPassword = req.body.adminpassword;
+    console.log(req.body);
     db.query(
       "Select * from admin where username = ? and password =?",
       [adminUsername, adminPassword],
@@ -21,7 +22,7 @@ module.exports = {
           } else {
             res.render("login/admin-login.ejs", {
               title: "Admin Login",
-              status: "Invaid Cresidentials",
+              status: "Invaid Credential",
             });
           }
         }
@@ -58,7 +59,7 @@ module.exports = {
             } else {
               res.render("login/ngo-login.ejs", {
                 title: "Ngo Login",
-                status: "Invaid Cresidentials",
+                status: "Invaid Credential",
               });
             }
           }
@@ -90,11 +91,14 @@ module.exports = {
               restName: results[0].rest_name,
             };
             res.cookie("restDet", restLogDet);
+            // res.render("profiles/rest-profile.ejs", {
+            //   status: false,
+            // });
             res.redirect("/rest-profile");
           } else {
             res.render("login/restaurant-login.ejs", {
               title: "Restaurant Login",
-              status: "Bad cresidential",
+              status: "Invaid Credential",
             });
           }
         }
@@ -209,9 +213,13 @@ module.exports = {
     res.clearCookie("username");
     res.redirect("admin-login");
   },
-  adminlogOut: (req, res) => {
-    res.clearCookie("username");
-    res.redirect("admin-login");
+  restlogOut: (req, res) => {
+    res.clearCookie("restDet");
+    res.redirect("restaurant-login");
+  },
+  ngologOut: (req, res) => {
+    res.clearCookie("ngoDet");
+    res.redirect("ngo-login");
   },
   addReg: (req, res) => {
     db.query(

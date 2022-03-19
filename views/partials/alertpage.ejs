@@ -1,0 +1,30 @@
+<section class="reg-class" id="passnotmatch">
+    <div class="add-rest ">
+        <h2 class="dash-nav-title " style="padding-top: 0;">
+            Password Not Matched
+        </h2>
+        <form class="admin-login" action="/rest-change-pass" method="post" autocomplete="off">
+            <div class="material-textfield">
+                <input placeholder=" " type="button" class=" btn btn-danger" onclick="dispCls('passnotmatch')"
+                    value="Close">
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    const setTimer = document.querySelector(".setTimer");
+    console.log(setTimer)
+    const myTimeout = setTimeout(rmDisp, 5000);
+
+    function rmDisp() {
+        setTimer.style.display = "none";
+    }
+    dispReg = (idName) => {
+        const restReg = document.getElementById(idName);
+        restReg.style.transform = "scale(1)";
+    }
+    dispCls = (idName) => {
+        const restReg = document.getElementById(idName);
+        restReg.style.transform = "scale(0)";
+    }
+</script>
