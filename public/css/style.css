@@ -323,3 +323,52 @@ footer div:first-child a:hover {
   z-index: 100;
   position: fixed;
 }
+.alert-down {
+  /* background-color: rgba(0, 0, 0, 0.486); */
+  width: max-content;
+  position: fixed;
+  right: 1px;
+  top: 60px;
+  border-radius: 15px;
+}
+.alert-down > div {
+  background-color: var(--sec-color2);
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 25px 9px rgba(0, 0, 0, 0.363);
+  transition: transform 5000ms ease-in-out;
+  transform: translate(0rem);
+}
+.disp-alrt {
+  animation-duration: 500ms;
+  animation-name: slidein;
+}
+.rm-alrt {
+  animation-duration: 500ms;
+  animation-name: slideout;
+}
+@keyframes slidein {
+  0% {
+    transform: translate(20rem);
+  }
+
+  100% {
+    transform: translate(0rem);
+  }
+}
+@keyframes slideout {
+  0% {
+    transform: translate(0rem);
+  }
+
+  100% {
+    transform: translate(20rem);
+  }
+}
+.alert-down > div button {
+  padding: 3px;
+}
+.alert-down > div span {
+  font-size: large;
+}

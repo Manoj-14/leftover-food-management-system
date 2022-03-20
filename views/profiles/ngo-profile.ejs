@@ -7,6 +7,11 @@
     <body>
         <!-- <div id="preloader"></div> -->
         <%- include('../partials/dashboard-nav.ejs'); %>
+            <section class="alert-down disp-alrt" id="swip_down">
+                <div>
+                    <span>Swipe down to accept orders</span><br>
+                </div>
+            </section>
             <section class="rest-dashboard">
                 <section class="prof-det">
                     <div class="prof-attr">
@@ -45,7 +50,9 @@
                             <%= ngoPin%>
                         </spam>
                     </div>
-                    <button class=" btn btn-primary  " onclick="dispReg('regDet')">Change Password</button>
+                    <div class="prof-attr">
+                        <button class=" btn btn-primary  " onclick="dispReg('regDet')">Change Password</button>
+                    </div>
                 </section>
                 <section class="reg-class" id="passnotmatch">
                     <div class="add-rest ">
@@ -90,7 +97,7 @@
                         </form>
                     </div>
                 </section>
-                <h3>Foods</h3>
+                <h3 id="sub-heading">Foods</h3>
                 <div id="rest-list" class="rest-list">
                     <table class="table">
                         <thead>
@@ -149,10 +156,15 @@
                 </div>
             </section>
             <script>
-                var loader = document.getElementById("preloader");
-                window.addEventListener("load", () => {
-                    loader.style.display = "none";
-                })
+                // var loader = document.getElementById("preloader");
+                // window.addEventListener("load", () => {
+                //     loader.style.display = "none";
+                // })
+                slideout = () => {
+                    const alertBox = document.getElementById("swip_down");
+                    alertBox.style.animationName = "slideout";
+                    alertBox.style.transform = "translate(20rem)";
+                }
                 dispReg = (idName) => {
                     const restReg = document.getElementById(idName);
                     restReg.style.transform = "scale(1)";
@@ -161,6 +173,8 @@
                     const restReg = document.getElementById(idName);
                     restReg.style.transform = "scale(0)";
                 }
+                const slidetime = setTimeout(slideout, 3000);
+                // slideout();
             </script>
     </body>
 

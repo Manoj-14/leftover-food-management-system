@@ -14,8 +14,7 @@
                     <label>Name</label>
                 </div>
                 <div class="material-textfield">
-                    <input placeholder=" " required name="adminEmail" class="admin-user" type="email"
-                        value="" />
+                    <input placeholder=" " required name="adminEmail" class="admin-user" type="email" value="" />
                     <label>Email</label>
                 </div>
                 <div class="material-textfield">
@@ -39,5 +38,11 @@
             </div>
         </form>
     </body>
+    <script>
+        var loader = document.getElementById("preloader");
+            window.addEventListener("load", () => {
+                loader.style.display = "none";
+            })
+    </script>
 
     </html>

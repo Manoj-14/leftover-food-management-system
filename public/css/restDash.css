@@ -10,18 +10,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding: 2rem 5.2rem;
+  background-color: var(--sec-color2);
+  color: var(--sec-color3);
+  box-shadow: 5px 5px 25px 9px rgba(0, 0, 0, 0.363);
+  border-radius: 10px;
 }
 .prof-det spam {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
-.prof-attr spam:first-child {
-  color: var(--ter-color2);
-  font-size: 1.8rem;
+.prof-attr {
+  padding: 0.5rem 0;
 }
-.prof-attr spam + spam {
-  border-bottom: 3px solid #ff9f1c;
+.prof-attr spam:first-child {
+  color: var(--sec-color1);
+  font-size: 1.8rem;
 }
 .row-data input {
   border: none;
@@ -33,4 +37,9 @@
 }
 .sl-inp {
   width: 4rem !important;
+}
+#sub-heading {
+  color: var(--prmy-color);
+  text-align: center;
+  font-weight: 800;
 }

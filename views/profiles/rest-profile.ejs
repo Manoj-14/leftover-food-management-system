@@ -7,6 +7,12 @@
     <body>
         <!-- <div id="preloader"></div> -->
         <%- include('../partials/dashboard-nav.ejs'); %>
+            <section class="alert-down disp-alrt" id="swip_down">
+                <div>
+                    <span>Swipe down to donate food</span><br>
+                </div>
+            </section>
+
             <section class="rest-dashboard">
                 <section class="prof-det">
                     <div class="prof-attr">
@@ -87,7 +93,7 @@
                     </div>
                 </section>
                 <div class="add-don">
-                    <h3>Send Food</h3>
+                    <h3 id="sub-heading">Send Food</h3>
                     <% if (status) { %>
                         <p class="success setTimer">
                             <%= status %>
@@ -113,10 +119,10 @@
             </section>
     </body>
     <script>
-        var loader = document.getElementById("preloader");
-        window.addEventListener("load", () => {
-            loader.style.display = "none";
-        })
+        // var loader = document.getElementById("preloader");
+        // window.addEventListener("load", () => {
+        //     loader.style.display = "none";
+        // })
         const setTimer = document.querySelector(".setTimer");
         // const cur_pass = document.getElementById("pass_cur");
         const new_pass = document.getElementById("pass_new");
@@ -170,6 +176,13 @@
         function incr() {
             dispReg('regDet');
         }
+        slideout = () => {
+            const alertBox = document.getElementById("swip_down");
+            alertBox.style.animationName = "slideout";
+            alertBox.style.transform = "translate(20rem)";
+        }
+        const slidetime = setTimeout(slideout, 3000);
+
         // incr()
 
     </script>

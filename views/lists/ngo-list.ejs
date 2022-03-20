@@ -151,6 +151,10 @@
 
     </body>
     <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", () => {
+            loader.style.display = "none";
+        })
         dispReg = (idName) => {
             const restReg = document.getElementById(idName);
             restReg.style.transform = "scale(1)";

@@ -36,7 +36,7 @@
                                 <%})%>
                                     <%} else {%>
                                         <tr>
-                                            <th colspan="4" style="text-align: center;">Empty</th>
+                                            <th colspan="5" style="text-align: center;">Empty</th>
                                         </tr>
                                         <%}%>
 
@@ -85,5 +85,11 @@
                 </table>
             </div>
     </body>
+    <script>
+        var loader = document.getElementById("preloader");
+            window.addEventListener("load", () => {
+                loader.style.display = "none";
+            })
+    </script>
 
     </html>
