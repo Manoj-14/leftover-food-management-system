@@ -284,7 +284,7 @@ footer div:first-child a:hover {
 }
 .row-data .sl-inp {
   border: none;
-  width: max-content !important;
+  /* width: max-content !important; */
   height: min-content !important;
   padding: 0 !important;
   background-color: transparent;

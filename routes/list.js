@@ -154,7 +154,7 @@ module.exports = {
       const ngoUid = req.cookies.ngoDet.ngo_uid;
       console.log(ngoName, ngoEmail, ngoUid);
       db.query(
-        "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and L.ngo_uid = ?",
+        "SELECT D.SEND_ID,L.date,D.Name,D.Pincode,D.Quantity from donors D,log L,orders O,ngo N where D.SEND_ID = L.order_no and O.order_no =L.order_no and N.ngo_unique_id=L.ngo_uid and L.ngo_uid = ?",
         [ngoUid],
         (err, rows) => {
           console.log(rows);
