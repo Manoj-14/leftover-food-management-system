@@ -40,7 +40,7 @@ module.exports = {
   getRestDash: (req, res) => {
     if (req.cookies.restDet == undefined) {
       res.render("login/restaurant-login.ejs", {
-        title: "Res Login",
+        title: "Restaurant Login",
         status: "Please login again",
       });
     } else {
@@ -54,12 +54,12 @@ module.exports = {
             console.log(err);
           }
           res.render("profiles/rest-profile.ejs", {
-            title: "Rest Profile || Dashboard",
+            title: "Restaurant Profile || Dashboard",
             admin_prof: false,
             rest_prof: true,
             ngo_prof: false,
             status: false,
-            nav_title: "Restaurent dashboard",
+            nav_title: "Restaurant dashboard",
             restName: rows[0].rest_name,
             restEmail: rows[0].rest_email,
             restPhone: rows[0].rest_phone,

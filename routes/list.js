@@ -14,7 +14,7 @@ module.exports = {
           rest_prof: false,
           ngo_prof: false,
           nav_stat: "admin-rest",
-          nav_title: "Restaurents list",
+          nav_title: "Restaurants list",
           rows,
         });
       });
