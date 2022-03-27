@@ -306,7 +306,7 @@ module.exports = {
             if (err.code == "ER_DUP_ENTRY") {
               res.render("regs-form/rest-reg-form.ejs", {
                 title: "Restaurent Registration",
-                stsMsg: "Password Not Matched",
+                stsMsg: "Email ID Already Exist",
               });
             } else {
               throw err;
@@ -350,7 +350,7 @@ module.exports = {
             if (err.code == "ER_DUP_ENTRY") {
               res.render("regs-form/ngo-reg-form.ejs", {
                 title: "NGO Registration",
-                stsMsg: "Password Not Matched",
+                stsMsg: "UID Exist",
               });
             } else {
               throw err;

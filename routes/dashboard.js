@@ -216,7 +216,7 @@ module.exports = {
     });
   },
   restProfUp: (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     db.query(
       "select * from restaurant where rest_email =?",
       [req.body.restEmail],

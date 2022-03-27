@@ -372,3 +372,6 @@ footer div:first-child a:hover {
 .alert-down > div span {
   font-size: large;
 }
+#red-siz {
+  width: min-content !important;
+}

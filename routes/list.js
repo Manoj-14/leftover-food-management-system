@@ -82,17 +82,26 @@ module.exports = {
           if (err) {
             console.log(err);
           } else {
-            console.log(rows);
-            res.render("lists/history.ejs", {
-              title: "Admin Dashboard || History",
-              length: rows.length,
-              admin_prof: true,
-              rest_prof: false,
-              ngo_prof: false,
-              nav_stat: "admin-log",
-              nav_title: "History",
-              rows,
-            });
+            db.query(
+              "SELECT O.order_no , D.name,D.Phone,D.Quantity,D.desc , O.ordered_Date from orders O , donors D WHERE O.order_no = D.SEND_ID AND O.status = ?",
+              ["Expried"],
+              (err, results) => {
+                console.log(results);
+                res.render("lists/history.ejs", {
+                  title: "Admin Dashboard || History",
+                  length: rows.length,
+                  resLen: results.length,
+                  admin_prof: true,
+                  rest_prof: false,
+                  ngo_prof: false,
+                  nav_stat: "admin-log",
+                  nav_title: "History",
+                  rows,
+                  results,
+                });
+              }
+            );
+            // console.log(rows);
           }
         }
       );
