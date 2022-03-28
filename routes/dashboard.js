@@ -246,10 +246,10 @@ module.exports = {
                 req.body.restEmail.trim(),
               ],
               (err, results) => {
-                // res.redirect("rest-list");
-                res.render("profiles\rest-profile.ejs", {
-                  status: "Thank you for food",
-                });
+                res.redirect("rest-list");
+                // res.render("profiles\rest-profile.ejs", {
+                //   status: "Thank you for food",
+                // });
               }
             );
           }
