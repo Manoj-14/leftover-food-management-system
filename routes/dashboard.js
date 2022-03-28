@@ -265,7 +265,9 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
+          console.log(rows);
           const { ngoName, ngoUid, ngoNumber, ngoAddress, ngoPin } = req.body;
+          console.log(req.body.ngoName);
           const {
             Name,
             ngo_unique_id,
@@ -275,11 +277,12 @@ module.exports = {
             ngo_phone,
           } = rows[0];
           if (
-            (Name == ngoName.trim(),
+            Name == ngoName.trim() &&
             ngo_address == ngoAddress.trim() &&
-              ngo_pincode == ngoPin.trim() &&
-              ngo_phone == ngoNumber.trim())
+            ngo_pincode == ngoPin.trim() &&
+            ngo_phone == ngoNumber.trim()
           ) {
+            console.log(ngoName == Name);
             res.redirect("ngo-list");
           } else {
             db.query(
@@ -292,6 +295,9 @@ module.exports = {
                 ngo_unique_id,
               ],
               (err, results) => {
+                if (err) {
+                  console.log(err);
+                }
                 res.redirect("ngo-list");
               }
             );
