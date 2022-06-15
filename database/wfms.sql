@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2022 at 07:06 PM
+-- Generation Time: Jun 15, 2022 at 08:18 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -97,7 +97,14 @@ INSERT INTO `donors` (`SEND_ID`, `Name`, `Phone`, `Email`, `Date`, `Quantity`, `
 (43, 'Manoj M(Guest)', 8765456765, 'Not Mentioned', '2022-03-27 10:54:50', 78, 570016, 'Veg'),
 (44, 'Athiti', 8746867654, 'athithi@gmail.com', '2022-03-27 11:11:38', 100, 577232, 'non veg'),
 (45, 'VVCE Boys Hostel', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-27 20:34:13', 56, 570016, 'manoj m'),
-(46, 'VVCE Boys Hostel', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-27 21:02:39', 76, 570016, 'non-veg');
+(46, 'VVCE Boys Hostel', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-27 21:02:39', 76, 570016, 'non-veg'),
+(47, 'Manohar(Guest)', 767654567, 'Not Mentioned', '2022-03-28 07:01:36', 78, 570016, 'veg'),
+(48, 'jcjm(Guest)', 648, 'Not Mentioned', '2022-03-28 07:01:50', 875, 784, 'kjvm'),
+(49, 'VVCE Boys Hostel', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-28 07:02:50', 56, 570016, 'veg'),
+(50, 'Durga bavan', 6789345678, 'durbav@gmail.com', '2022-03-28 07:03:54', 100, 570016, 'veg'),
+(51, 'Durga bavan', 6789345678, 'durbav@gmail.com', '2022-03-28 07:04:27', 60, 570016, 'veg\r\n'),
+(52, 'VVCE Boys Hostel', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-28 07:05:04', 80, 570016, 'veg'),
+(53, 'VVCE Boys', 7865434537, 'vvcebh@vvce.ac.in', '2022-03-28 11:04:58', 50, 570016, 'idli , dosa');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,9 @@ INSERT INTO `guestlogin` (`GUEST_ID`, `NAME`, `NUMBER`, `ADDRESS`, `pincode`, `Q
 (61, '4(Guest)', 4, '4', 674, 5, 'rice'),
 (62, 'Manoj_14(Guest)', 2147483647, 'Shimoga', 577231, 89, 'veg  + non veg'),
 (63, 'Manoj M(Guest)', 2147483647, 'Mysure', 570016, 40, 'Veg'),
-(64, 'Manoj M(Guest)', 2147483647, 'Mysore', 570016, 78, 'Veg');
+(64, 'Manoj M(Guest)', 2147483647, 'Mysore', 570016, 78, 'Veg'),
+(65, 'Manohar(Guest)', 767654567, 'Mysoru', 570016, 78, 'veg'),
+(66, 'jcjm(Guest)', 648, 'mjfv', 784, 875, 'kjvm');
 
 -- --------------------------------------------------------
 
@@ -179,7 +188,10 @@ INSERT INTO `log` (`order_no`, `date`, `ngo_uid`) VALUES
 (41, '2022-03-25', NULL),
 (42, '2022-03-27', NULL),
 (43, '2022-03-27', 'NGO02'),
-(44, '2022-03-27', 'NGO02');
+(44, '2022-03-27', 'NGO02'),
+(47, '2022-06-15', 'NGO01'),
+(48, '2022-06-15', NULL),
+(53, '2022-03-28', 'NGO02');
 
 -- --------------------------------------------------------
 
@@ -202,8 +214,9 @@ CREATE TABLE `ngo` (
 --
 
 INSERT INTO `ngo` (`Name`, `ngo_unique_id`, `ngo_address`, `ngo_pincode`, `ngo_email`, `ngo_phone`, `ngo_password`) VALUES
-('NGO1', 'NGO01', 'Mysore', 570016, 'ngo1@gmail.com', 7865456785, 'ngo123'),
-('NGO2', 'NGO02', 'Shimoga', 577432, 'ngo2@gmail.com', 7865454345, 'ngo@123');
+('A G N FOUNDATION', 'NGO01', 'Banglore', 570016, 'ngo1@gmail.com', 7865456785, 'ngo123'),
+('A Little Change', 'NGO02', 'Shimoga', 577432, 'ngo2@gmail.com', 7865454345, 'ngo@123'),
+('A Plus Institute', 'NGO03', 'Mysore', 577356, 'ngo3@gmail.com', 7656787654, 'ngo@123');
 
 -- --------------------------------------------------------
 
@@ -251,7 +264,14 @@ INSERT INTO `orders` (`ordered_Date`, `order_no`, `status`, `aproved_admin`) VAL
 ('2022-03-27 10:54:50', 43, 'Acceped by NGO', 'Manoj_14'),
 ('2022-03-27 11:11:38', 44, 'Acceped by NGO', 'Manoj_14'),
 ('2022-03-27 20:34:13', 45, 'Expried', NULL),
-('2022-03-27 21:02:39', 46, 'Waiting for Admin', NULL);
+('2022-03-27 21:02:39', 46, 'Expried', NULL),
+('2022-03-28 07:01:36', 47, 'Acceped by NGO', 'Manoj_14'),
+('2022-03-28 07:01:50', 48, 'Waiting for NGO', 'Manoj_14'),
+('2022-03-28 07:02:50', 49, 'Waiting for Admin', NULL),
+('2022-03-28 07:03:54', 50, 'Waiting for Admin', NULL),
+('2022-03-28 07:04:27', 51, 'Waiting for Admin', NULL),
+('2022-03-28 07:05:04', 52, 'Waiting for Admin', NULL),
+('2022-03-28 11:04:58', 53, 'Acceped by NGO', 'Manoj_14');
 
 -- --------------------------------------------------------
 
@@ -273,9 +293,10 @@ CREATE TABLE `restaurant` (
 --
 
 INSERT INTO `restaurant` (`rest_name`, `rest_email`, `rest_phone`, `rest_loc`, `rest_pin`, `rest_password`) VALUES
-('Athiti', 'athithi@gmail.com', 8746867654, 'Shimoga', 577232, 'rest'),
-('Durga bavan', 'durbav@gmail.com', 6789345678, 'Mysure', 570016, 'rest@123'),
-('VVCE Boys Hostel', 'vvcebh@vvce.ac.in', 7865434537, 'Mysore', 570016, 'vvcebh@123');
+('Hotel Athiti', 'athithi@gmail.com', 8746867654, 'Shimoga', 577232, 'rest'),
+('Durga Bavan', 'durbav@gmail.com', 6789345678, 'Mysure', 570016, 'rest@123'),
+('vvce mobile canteen', 'vvce@gmail.com', 6765367656, 'Mysore', 570016, 'rest@123'),
+('VVCE Boys', 'vvcebh@vvce.ac.in', 7865434537, 'Mysore', 570016, 'vvcebh@123');
 
 --
 -- Indexes for dumped tables
@@ -333,19 +354,19 @@ ALTER TABLE `restaurant`
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
-  MODIFY `SEND_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `SEND_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `guestlogin`
 --
 ALTER TABLE `guestlogin`
-  MODIFY `GUEST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `GUEST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_no` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `order_no` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables
@@ -364,15 +385,6 @@ ALTER TABLE `log`
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`order_no`) REFERENCES `donors` (`SEND_ID`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`aproved_admin`) REFERENCES `admin` (`username`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
-DELIMITER $$
---
--- Events
---
-CREATE DEFINER=`root`@`localhost` EVENT `auto_status_up` ON SCHEDULE EVERY 20 SECOND STARTS '2022-03-27 20:28:25' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE orders SET status = "Expried" WHERE STATUS = "Waiting for Admin"
-AND orders.ordered_Date < CURRENT_DATE$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
